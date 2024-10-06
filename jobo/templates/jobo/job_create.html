@@ -1,0 +1,93 @@
+{% extends 'jobo/base.html' %}
+
+{% block content %}
+<!-- bradcam_area  -->
+<div class="bradcam_area bradcam_bg_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3>Post a Job Now</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ bradcam_area  -->
+<section class="contact-section section_padding">
+    <div class="container">
+        <h1>Posting a job with us is free and you can post as many job postings as you want</h1>
+        <form class="form-contact contact_form" action="" method="post" id="contactForm" novalidate="novalidate">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <input class="form-control" name="title" id="title" type="text" onfocus="this.placeholder = ''"
+                            onblur="this.placeholder = 'Job Title'" placeholder='Job Title'>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <textarea class="form-control w-100" name="description" id="description" cols="30" rows="9"
+                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Job description'"
+                            placeholder='Job description'></textarea>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <textarea class="form-control w-100" name="benefits" id="benefits" cols="30" rows="9"
+                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Benefits'"
+                            placeholder='Benefits'></textarea>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input class="form-control" name="job_nature" id="job_nature" type="text"
+                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Job Nature'"
+                            placeholder='Job Nature'>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input class="form-control" name="gender" id="gender" type="text"
+                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Gender'" placeholder='Gender'>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <textarea class="form-control w-100" name="qualifications" id="qualifications" cols="30"
+                            rows="9" onfocus="this.placeholder = ''"
+                            onblur="this.placeholder = 'Desired Qualifications'"
+                            placeholder='Desired Qualifications'></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input class="form-control" name="location" id="location" type="text"
+                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Location'"
+                            placeholder='Location'>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input class="form-control" name="experience" id="experience" type="text"
+                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Experience'"
+                            placeholder='Experience'>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <input class="form-control" name="salary_range" id="salary_range" type="text"
+                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Salary Range'"
+                            placeholder='Salary Range'>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <button type="submit" class="button button-contactForm btn_4 boxed-btn">Post Job</button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
