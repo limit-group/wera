@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap");
+
 .flex-center-start {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -25,12 +24,12 @@
 /* Large Mobile :480px. */
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Cabin", sans-serif !important;
   font-weight: normal;
   font-style: normal;
 }
 
-/* line 13, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 13,
 .img {
   max-width: 100%;
   -webkit-transition: 0.3s;
@@ -39,7 +38,7 @@ body {
   transition: 0.3s;
 }
 
-/* line 17, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 17,
 a,
 .button {
   -webkit-transition: 0.3s;
@@ -48,19 +47,19 @@ a,
   transition: 0.3s;
 }
 
-/* line 21, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 21,
 a:focus,
 .button:focus, button:focus {
   text-decoration: none;
   outline: none;
 }
 
-/* line 26, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 26,
 a:focus {
   text-decoration: none;
 }
 
-/* line 29, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 29,
 a:focus,
 a:hover,
 .portfolio-cat a:hover,
@@ -68,20 +67,20 @@ a:hover,
   text-decoration: none;
 }
 
-/* line 35, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 35,
 a,
 button {
   color: #1F1F1F;
   outline: medium none;
 }
 
-/* line 40, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 40,
 h1, h2, h3, h4, h5 {
-  font-family: "Roboto", sans-serif;
+ 
   color: #191d34;
 }
 
-/* line 44, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 44,
 h1 a,
 h2 a,
 h3 a,
@@ -91,18 +90,17 @@ h6 a {
   color: inherit;
 }
 
-/* line 53, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
 ul {
   margin: 0px;
   padding: 0px;
 }
 
-/* line 57, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+
 li {
   list-style: none;
 }
 
-/* line 60, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 60,
 p {
   font-size: 16px;
   font-weight: 400;
@@ -112,7 +110,7 @@ p {
   font-family: "Roboto", sans-serif;
 }
 
-/* line 69, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 69,
 label {
   color: #7e7e7e;
   cursor: pointer;
@@ -120,102 +118,102 @@ label {
   font-weight: 400;
 }
 
-/* line 75, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 75,
 *::-moz-selection {
   background: #444;
   color: #fff;
   text-shadow: none;
 }
 
-/* line 80, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 80,
 ::-moz-selection {
   background: #444;
   color: #fff;
   text-shadow: none;
 }
 
-/* line 85, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 85,
 ::selection {
   background: #444;
   color: #fff;
   text-shadow: none;
 }
 
-/* line 90, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 90,
 *::-webkit-input-placeholder {
   color: #cccccc;
   font-size: 14px;
   opacity: 1;
 }
 
-/* line 95, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 95,
 *:-ms-input-placeholder {
   color: #cccccc;
   font-size: 14px;
   opacity: 1;
 }
 
-/* line 100, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+
 *::-ms-input-placeholder {
   color: #cccccc;
   font-size: 14px;
   opacity: 1;
 }
 
-/* line 105, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+
 *::placeholder {
   color: #cccccc;
   font-size: 14px;
   opacity: 1;
 }
 
-/* line 111, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+
 h3 {
   font-size: 24px;
 }
 
-/* line 115, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+
 .mb-65 {
   margin-bottom: 67px;
 }
 
-/* line 119, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 119,
 .black-bg {
   background: #020c26 !important;
 }
 
-/* line 123, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 123,
 .white-bg {
   background: #ffffff;
 }
 
-/* line 126, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 126,
 .gray-bg {
   background: #f5f5f5;
 }
 
-/* line 131, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 131,
 .bg-img-1 {
   background-image: url(../img/slider/slider-img-1.jpg);
 }
 
-/* line 134, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 134,
 .bg-img-2 {
   background-image: url(../img/background-img/bg-img-2.jpg);
 }
 
-/* line 137, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 137,
 .cta-bg-1 {
   background-image: url(../img/background-img/bg-img-3.jpg);
 }
 
-/* line 142, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 142,
 .overlay {
   position: relative;
   z-index: 0;
 }
 
-/* line 146, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 146,
 .overlay::before {
   position: absolute;
   content: "";
@@ -228,13 +226,13 @@ h3 {
   opacity: .5;
 }
 
-/* line 158, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 158,
 .overlay2 {
   position: relative;
   z-index: 0;
 }
 
-/* line 162, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 162,
 .overlay2::before {
   position: absolute;
   content: "";
@@ -247,13 +245,13 @@ h3 {
   opacity: 0.6;
 }
 
-/* line 174, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 174,
 .overlay_03 {
   position: relative;
   z-index: 0;
 }
 
-/* line 178, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+
 .overlay_03::before {
   position: absolute;
   width: 100%;
@@ -266,13 +264,13 @@ h3 {
   z-index: -1;
 }
 
-/* line 191, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+
 .bradcam_overlay {
   position: relative;
   z-index: 0;
 }
 
-/* line 195, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+
 .bradcam_overlay::before {
   position: absolute;
   content: "";
@@ -293,19 +291,19 @@ h3 {
   opacity: 1;
 }
 
-/* line 211, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 211,
 .section-padding {
   padding-top: 120px;
   padding-bottom: 120px;
 }
 
-/* line 215, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 215,
 .pt-120 {
   padding-top: 120px;
 }
 
 /* button style */
-/* line 221, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 221,
 .owl-carousel .owl-nav div {
   background: transparent;
   height: 50px;
@@ -333,71 +331,71 @@ h3 {
   color: #fff;
 }
 
-/* line 249, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 249,
 .owl-carousel .owl-nav div.owl-next {
   left: auto;
   right: 150px;
 }
 
-/* line 254, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 254,
 .owl-carousel .owl-nav div.owl-next i {
   position: relative;
   right: 0;
 }
 
-/* line 261, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 261,
 .owl-carousel .owl-nav div.owl-prev i {
   position: relative;
   top: 0px;
 }
 
-/* line 271, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 271,
 .owl-carousel:hover .owl-nav div {
   opacity: 1;
   visibility: visible;
 }
 
-/* line 274, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 274,
 .owl-carousel:hover .owl-nav div:hover {
   color: #fff;
   background: #FD8E5E;
   border: 1px solid transparent;
 }
 
-/* line 284, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 284,
 .mb-20px {
   margin-bottom: 20px;
 }
 
-/* line 288, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 288,
 .mb-55 {
   margin-bottom: 55px;
 }
 
-/* line 291, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 291,
 .mb-40 {
   margin-bottom: 40px;
 }
 
-/* line 294, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 294,
 .mb-20 {
   margin-bottom: 20px;
 }
 
-/* line 299, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+/* line 299,
 .mb-60 {
   margin-bottom: 50px !important;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  /* line 299, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+  /* line 299,
   .mb-60 {
     margin-bottom: 30px !important;
   }
 }
 
 @media (max-width: 767px) {
-  /* line 299, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+  /* line 299,
   .mb-60 {
     margin-bottom: 20px !important;
   }

@@ -7,6 +7,12 @@
     <title>Jobos</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
@@ -25,18 +31,10 @@
     <link rel="stylesheet" href="{% static 'css/slicknav.css' %}" />
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
   </head>
 
   <body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-        your experience and security.
-      </p>
-    <![endif]-->
-
     <!-- header-start -->
     <header>
       <div class="header-area">
@@ -56,8 +54,8 @@
                     <nav>
                       <ul id="navigation">
                         <li><a href="{% url 'home' %}">home</a></li>
-                        <li><a href="{% url 'jobs' %}">Browse Jobos</a></li>
-                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                        <li><a href="{% url 'jobs' %}">browse jobos</a></li>
+                        <li><a href="{% url 'contact' %}">contact</a></li>
                       </ul>
                     </nav>
                   </div>
@@ -73,7 +71,9 @@
                         >
                       </div>
                       {% else %}
-                      <a href="{% provider_login_url 'google' %}"
+                      <a
+                        href="{% provider_login_url 'google' %} "
+                        class="btn btn-outline-white"
                         >Login with Google</a
                       >
                       {% endif %}
@@ -179,7 +179,10 @@
                 data-wow-delay=".6s"
               >
                 <h3 class="footer_title">Subscribe</h3>
-                <form action="{% url 'newsletter_create' %}" class="newsletter_form">
+                <form
+                  action="{% url 'newsletter_create' %}"
+                  class="newsletter_form"
+                >
                   <input type="text" placeholder="Enter your mail" />
                   <button type="submit">Subscribe</button>
                 </form>
