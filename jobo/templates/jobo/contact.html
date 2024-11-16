@@ -1,11 +1,10 @@
 {% extends 'jobo/base.html' %} {% block content %}
 
-<!-- ================ contact section start ================= -->
 <section class="contact-section section_padding">
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <h2 class="contact-title">Get in Touch</h2>
+        <h2 class="contact-title">get in touch</h2>
       </div>
       <div class="col-lg-8">
         <form
@@ -25,8 +24,8 @@
                   cols="30"
                   rows="9"
                   onfocus="this.placeholder = ''"
-                  onblur="this.placeholder = 'Enter Message'"
-                  placeholder="Enter Message"
+                  onblur="this.placeholder = 'enter message'"
+                  placeholder="enter message"
                 ></textarea>
               </div>
             </div>
@@ -38,8 +37,8 @@
                   id="name"
                   type="text"
                   onfocus="this.placeholder = ''"
-                  onblur="this.placeholder = 'Enter your name'"
-                  placeholder="Enter your name"
+                  onblur="this.placeholder = 'enter your name'"
+                  placeholder="enter your name"
                 />
               </div>
             </div>
@@ -51,8 +50,8 @@
                   id="email"
                   type="email"
                   onfocus="this.placeholder = ''"
-                  onblur="this.placeholder = 'Enter email address'"
-                  placeholder="Enter email address"
+                  onblur="this.placeholder = 'enter email address'"
+                  placeholder="enter email address"
                 />
               </div>
             </div>
@@ -64,8 +63,8 @@
                   id="subject"
                   type="text"
                   onfocus="this.placeholder = ''"
-                  onblur="this.placeholder = 'Enter Subject'"
-                  placeholder="Enter Subject"
+                  onblur="this.placeholder = 'enter subject'"
+                  placeholder="enter subject"
                 />
               </div>
             </div>
@@ -73,39 +72,37 @@
           <div class="form-group mt-3">
             <button
               type="submit"
-              class="button button-contactForm btn_4 boxed-btn"
+              class="btn btn-primary w-100"
             >
-              Send Message
+              send message
             </button>
           </div>
         </form>
       </div>
       <div class="col-lg-4">
         <div class="media contact-info">
-          <span class="contact-info__icon"><i class="ti-home"></i></span>
+          <span class="contact-info__icon"><i class="bi bi-home"></i></span>
           <div class="media-body">
-            <h3>Narobi, Kenya</h3>
-            <p>Kilimani</p>
+            <h3>nairobi, Kenya</h3>
+            <p>kilimani</p>
           </div>
         </div>
         <div class="media contact-info">
-          <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+          <span class="contact-info__icon"><i class="bi bi-tablet"></i></span>
           <div class="media-body">
             <h3>0759701314</h3>
             <p>24/7</p>
           </div>
         </div>
         <div class="media contact-info">
-          <span class="contact-info__icon"><i class="ti-email"></i></span>
+          <span class="contact-info__icon"><i class="bi bi-email"></i></span>
           <div class="media-body">
             <h3>support@jobos.com</h3>
-            <p>Send us your query anytime!</p>
+            <p>send us your query anytime!</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- ================ contact section end ================= -->
-
 {% endblock %}
