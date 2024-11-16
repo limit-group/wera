@@ -13,7 +13,7 @@
       </div>
       <div class="col-lg-3 col-md-4">
         <div class="single_input">
-          <select class="wide">
+          <select class="wide form-select">
             <option data-display="location">location</option>
             <option value="1">nairobi</option>
             <option value="2">kisumu</option>
@@ -23,7 +23,7 @@
       </div>
       <div class="col-lg-3 col-md-4">
         <div class="single_input">
-          <select class="wide">
+          <select class="wide form-select" >
             <option data-display="category">category</option>
             {% for c in categories %}
             <option value="{{ c.id }}">{{ c.name }}</option>
