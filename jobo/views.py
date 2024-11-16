@@ -1,3 +1,4 @@
+from allauth.account.decorators import verified_email_required
 from django.shortcuts import redirect, render
 
 from jobo.forms import ContactForm, JobForm, NewsletterForm
@@ -36,6 +37,7 @@ def contact(request):
     return render(request, "jobo/contact.html", {"form": form})
 
 
+@verified_email_required
 def job_create_view(request):
     if request.method == "POST":
         form = JobForm(request.POST)

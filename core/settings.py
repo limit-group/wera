@@ -37,7 +37,7 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".pythonanywhere.com"]
 
 INSTALLED_APPS = [
     "jobo",
-    "grappelli",
+    "jazzmin",
     "django_browser_reload",
     "django.contrib.admin",
     "django.contrib.auth",
