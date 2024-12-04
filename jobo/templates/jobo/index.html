@@ -42,13 +42,13 @@
         <div class="popular_search d-flex align-items-center">
           <span>popular search:</span>
           <ul>
-            <li><a href="#">design & creative</a></li>
-            <li><a href="#">marketing</a></li>
-            <li><a href="#">administration</a></li>
-            <li><a href="#">teaching & education</a></li>
-            <li><a href="#">engineering</a></li>
-            <li><a href="#">software & web</a></li>
-            <li><a href="#">telemarketing</a></li>
+            <li><a href="#" style="text-decoration: none;">design & creative</a></li>
+            <li><a href="#"  style="text-decoration: none;">marketing</a></li>
+            <li><a href="#"  style="text-decoration: none;">administration</a></li>
+            <li><a href="#"  style="text-decoration: none;">teaching & education</a></li>
+            <li><a href="#"  style="text-decoration: none;">engineering</a></li>
+            <li><a href="#"  style="text-decoration: none;">software & web</a></li>
+            <li><a href="#"  style="text-decoration: none;">telemarketing</a></li>
           </ul>
         </div>
       </div>
@@ -198,27 +198,4 @@
   </div>
 </div>
 {% endcomment %}
-
-<!-- job_searcing_wrap  -->
-<div class="job_searcing_wrap overlay">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-5 offset-lg-1 col-md-6">
-        <div class="">
-          <h3>looking for a job?</h3>
-          <p>start your ultimate job search today.</p>
-          <a href="{% url 'jobs' %}" class="btn btn-primary">browse jobs</a>
-        </div>
-      </div>
-      <div class="col-lg-5 offset-lg-1 col-md-6">
-        <div class="">
-          <h3>looking for an expert?</h3>
-          <p>list a job to get candidates fast.</p>
-          <a href="{% url 'job_create' %}" class="btn btn-primary">post a job</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- job_searcing_wrap end  -->
 {% endblock %}

@@ -1,10 +1,10 @@
 {% load static %} {% load socialaccount %}
 <!DOCTYPE html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Jobos</title>
+    <title>Wera</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -44,16 +44,17 @@
               <div class="row align-items-center">
                 <div class="col-xl-3 col-lg-2">
                   <div class="logo">
-                    <a href="{% url 'home' %}"> jobos </a>
+                    <a href="{% url 'home' %}"> wera </a>
                   </div>
                 </div>
                 <div class="col-xl-6 col-lg-7">
                   <div class="main-menu d-none d-lg-block">
                     <nav>
                       <ul id="navigation">
-                        <li><a href="{% url 'home' %}">home</a></li>
-                        <li><a href="{% url 'jobs' %}">browse jobos</a></li>
-                        <li><a href="{% url 'contact' %}">contact</a></li>
+                        <li><a href="{% url 'home' %}" class="text-black"  style="text-decoration: none;">home</a></li>
+                        <li><a href="{% url 'jobs' %}" class="text-black"  style="text-decoration: none;"> form mtaani</a></li>
+                        <li><a href="#" class="text-black"  style="text-decoration: none;">Wera</a></li>
+                        <li><a href="{% url 'contact' %}" class="text-black"   style="text-decoration: none;">contact</a></li>
                       </ul>
                     </nav>
                   </div>
@@ -73,14 +74,14 @@
                     </div>
                     <div class="d-none d-lg-block mx-2">
                       <a class="btn btn-primary" href="{% url 'job_create' %}"
-                        >post a job</a
+                        >post wera</a
                       >
                     </div>
                     {% if user.is_authenticated %}
                     <div class="my-6 hover:text-blue-600">
                       <a
                         href="{% url 'account_logout' %}"
-                        class="btn btn-primary btn-outline-white"
+                        class="btn btn-danger btn-outline-white"
                         >sign out</a
                       >
                     </div>
@@ -107,7 +108,7 @@
               <div class="footer_widget">
                 <h3>talk to us</h3>
                 <p>
-                  support@jobos.com <br />
+                  support@wera.com <br />
                   +254 759 701 314 <br />
                   Kilimani, Nairobi
                 </p>
@@ -159,16 +160,18 @@
               </div>
             </div>
             <div class="col-xl-4 col-md-6 col-lg-4">
-              <div class="footer_widget">
+              <div class="">
                 <h3>subscribe</h3>
                 <form
                   action="{% url 'newsletter_create' %}"
-                  class="newsletter_form"
+                  class="form-inline"
                 >
-                  <input type="text" placeholder="Enter your mail" />
+                <div class="form-group">
+                  <input type="text" placeholder="Enter your mail" class="form-control mb-2" />
                   <button type="submit" class="btn btn-primary">
                     subscribe
                   </button>
+                </div>
                 </form>
                 <p class="">get jobs offers delivered in your mailbox daily.</p>
               </div>
@@ -204,7 +207,6 @@
       integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
       crossorigin="anonymous"
     ></script>
-    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
     <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
     <script src="{% static 'js/waypoints.min.js' %}"></script>
     <script src="{% static 'js/nice-select.min.js' %}"></script>

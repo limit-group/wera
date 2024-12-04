@@ -1,5 +1,5 @@
 """
-ASGI config for jobos project.
+ASGI config for wera project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
