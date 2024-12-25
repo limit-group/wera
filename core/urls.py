@@ -19,8 +19,11 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path("", include("jobo.urls")),
-    path("grappelli/", include("grappelli.urls")),
+    path("", include("wera.urls")),
+    path("", include("contact.urls")),
+    path("", include("newsletter.urls")),
+    path("", include("contact_me.urls")),
+    path("", include("form_mtaani.urls")),
     path("admin/", admin.site.urls),
     path("accounts/", include("allauth.urls")),
     path("__reload__/", include("django_browser_reload.urls")),

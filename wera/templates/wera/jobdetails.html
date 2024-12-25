@@ -1,0 +1,92 @@
+{% extends 'wera/base.html' %} {% block content %}
+
+<div class="Wera_details_area">
+  <div class="container">
+    {% if Wera %}
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="Wera_details_header">
+          <div class="single_Weras white-bg d-flex justify-content-between">
+            <div class="Weras_left d-flex align-items-center">
+              <div class="thumb">
+                <img src="{% static 'img/svg_icon/1.svg' %}" alt="" />
+              </div>
+              <div class="Weras_conetent">
+                <a href="#">
+                  <h4>{{ Wera.title }}</h4>
+                </a>
+                <div class="links_locat d-flex align-items-center">
+                  <div class="location">
+                    <p><i class="fa fa-map-marker"></i> {{ Wera.location }}</p>
+                  </div>
+                  <div class="location">
+                    <p><i class="fa fa-clock-o"></i>{{ Wera.Wera_type }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="Weras_right">
+              <div class="apply_now">
+                <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="descript_wrap white-bg">
+          <div class="single_wrap">
+            <h4>Wera description</h4>
+            <p>{{ Wera.description }}</p>
+          </div>
+          <div class="single_wrap">
+            <h4>responsibility</h4>
+            <p>{{ Wera.experience }}</p>
+          </div>
+          <div class="single_wrap">
+            <h4>qualifications</h4>
+            <p>{{ Wera.desired_qualifications }}</p>
+          </div>
+          <div class="single_wrap">
+            <h4>benefits</h4>
+            <p>{{ Wera.benefits }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="Wera_sumary">
+          <div class="summery_header">
+            <h3>Wera summary</h3>
+          </div>
+          <div class="Wera_content">
+            <ul>
+              <li>published on: <span>{{ Wera.created }}</span></li>
+              <li>vacancy: <span>{{ Wera.vacancy }} Position</span></li>
+              <li>salary: <span>{{ Wera.salary_range }}</span></li>
+              <li>location: <span>{{ Wera.location }}</span></li>
+              <li>Wera nature: <span>{{ Wera.Wera_nature }}</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="share_wrap d-flex">
+          <span>share at:</span>
+          <ul>
+            <li>
+              <a href="#"> <i class="bi bi-facebook"></i></a>
+            </li>
+            <li>
+              <a href="#"> <i class="bi bi-google"></i></a>
+            </li>
+            <li>
+              <a href="#"> <i class="bi bi-twitter-x"></i></a>
+            </li>
+            <li>
+              <a href="#"> <i class="bi bi-envelope"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

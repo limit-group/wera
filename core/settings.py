@@ -19,7 +19,7 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-load_dotenv(os.path.join(BASE_DIR, '.env'))
+load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -36,7 +36,11 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".pythonanywhere.com"]
 # Application definition
 
 INSTALLED_APPS = [
-    "jobo",
+    "wera",
+    "contact",
+    "contact_me",
+    "newsletter",
+    "form_mtaani",
     "jazzmin",
     "django_browser_reload",
     "django.contrib.admin",
@@ -59,7 +63,7 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
-    'django.middleware.gzip.GZipMiddleware',
+    "django.middleware.gzip.GZipMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -115,9 +119,9 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": "postgres",
         "USER": "postgres.hmjpndecgpdxvptkpcmz",
-        "PASSWORD": os.environ['DB_PASSWORD'],
+        "PASSWORD": os.environ["DB_PASSWORD"],
         "HOST": "aws-0-ap-south-1.pooler.supabase.com",
-        "PORT": 6543
+        "PORT": 6543,
     }
 }
 
