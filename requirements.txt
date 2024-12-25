@@ -3,7 +3,7 @@ certifi==2024.8.30
 cffi==1.17.1
 charset-normalizer==3.3.2
 cryptography==43.0.1
-Django==5.1.1
+Django==5.1.4
 django-allauth==65.0.2
 django-allauth-themes==0.1.2
 django-browser-reload==1.15.0
