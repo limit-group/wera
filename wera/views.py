@@ -22,7 +22,7 @@ def weras(request):
 
 
 def wera_detail(request, pk):
-    wera = Wera.objects.get_or_404(pk=pk)
+    wera = Wera.objects.get(pk=pk)
     categories = Category.get_categories()
     return render(
         request,

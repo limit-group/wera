@@ -19,6 +19,8 @@ Wera is a section of the home page where full time employment posts can be poste
 Posting on the page is however restricted to users who've registered as businesses. 
 The post should contain images, location and the type of job.
 """
+
+
 class Wera(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
