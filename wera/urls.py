@@ -6,5 +6,5 @@ urlpatterns = [
     path("", index, name="home"),
     path("weras/", weras, name="weras"),
     path("wera/create/", wera_create_view, name="wera_create"),
-    path("wera-detail/<int:pk>/", wera_detail, name="weradetail"),
+    path("wera-detail/<int:pk>/", wera_detail, name="wera_detail"),
 ]

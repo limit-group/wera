@@ -1,25 +1,24 @@
 {% extends 'wera/base.html' %} {% block content %}
 
-<!--/ bradcam_area  -->
 <section class="contact-section section_padding">
   <div class="container">
-    <div class="justify-center items-center">
-      <h1>
-        Posting a Wera with us is free and you can post as many Wera postings as
+    <div class="justify-content-center items-center">
+      <h2>
+        Posting a wera with us is free and you can post as many Wera postings as
         you want
-      </h1>
+      </h2>
       <form class="" action="" method="post" id="" novalidate="novalidate">
         {% csrf_token %}
         <div class="row">
           <div class="col-12 mb-2">
             <div class="form-group">
-              <label for="">Wera title</label>
+              <label for="">Wera Title</label>
               <input class="form-control" name="title" id="title" type="text" />
             </div>
           </div>
           <div class="col-12 mb-2">
             <div class="form-group">
-              <label for="">form mtaani</label>
+              <label for="">Description</label>
               <textarea
                 class="form-control w-100"
                 name="benefits"
@@ -32,7 +31,7 @@
           <div class="mb-2"></div>
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="">location</label>
+              <label for="">Location</label>
               <input
                 class="form-control"
                 name="location"
@@ -43,9 +42,12 @@
           </div>
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="category">category</label>
+              <label for="category">Category</label>
               <select name="category" id="" class="form-select">
-                <option value="">select category</option>
+                <option value="">Select Category</option>
+                {% for c in categories %}
+                <option value="{{ c.id }}">{{ c.name }}</option>
+                {% endfor %}
               </select>
             </div>
           </div>

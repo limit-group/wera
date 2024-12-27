@@ -6,23 +6,24 @@
     <div class="row cat_search">
       <div class="col-lg-3 col-md-4">
         <div class="single_input">
-          <input type="text" placeholder="search keyword" />
+          <input type="text" placeholder="Search Keyword" />
         </div>
       </div>
       <div class="col-lg-3 col-md-4">
         <div class="single_input">
           <select class="wide form-select">
-            <option data-display="location">location</option>
-            <option value="1">nairobi</option>
-            <option value="2">kisumu</option>
-            <option value="4">nakuru</option>
+            <option data-display="location">Location</option>
+            <option value="1">Nairobi</option>
+            <option value="2">Kisumu</option>
+            <option value="4">Nakuru</option>
+            <option value="4">Mombasa</option>
           </select>
         </div>
       </div>
       <div class="col-lg-3 col-md-4">
         <div class="single_input">
           <select class="wide form-select">
-            <option data-display="category">category</option>
+            <option data-display="category">Category</option>
             {% for c in categories %}
             <option value="{{ c.id }}">{{ c.name }}</option>
             {% endfor %}
@@ -31,14 +32,14 @@
       </div>
       <div class="col-lg-3 col-md-12">
         <div class="Wera_btn">
-          <a href="#" class="btn btn-primary">pata wera</a>
+          <a href="#" class="btn btn-primary">Search</a>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-12">
         <div class="popular_search d-flex align-items-center">
-          <span>popular search:</span>
+          <span>Popular Search:</span>
           <ul>
             <li>
               <a href="#" style="text-decoration: none">design & creative</a>
@@ -78,7 +79,7 @@
       {% for j in categories %}
       <div class="col-lg-4 col-xl-3 col-md-6">
         <div class="single_catagory">
-          <a href="categories.html">
+          <a href="{% url 'category_detail' %}">
             <h4>{{ c.name }}</h4>
           </a>
           <p><span></span> Available positions</p>
@@ -89,38 +90,35 @@
   </div>
 </div>
 {% endcomment %}
-<!-- Wera_listing_area_start  -->
-<div class="Wera_listing_area p-5">
+
+<div class="job_listing_area p-5">
   <div class="container">
-    <div class="Wera_lists">
+    <div class="job_lists">
       <div class="row">
-        {% for j in Weras %}
+        {% for j in weras %}
         <div class="col-lg-12 col-md-12">
-          <div class="single_Weras white-bg d-flex justify-content-between">
-            <div class="Weras_left d-flex align-items-center">
-              <div class="Weras_conetent">
-                <a href="{% url 'Weradetail' j.pk %}">
+          <div class="single_jobs white-bg d-flex justify-content-between">
+            <div class="jobs_left d-flex align-items-center">
+              <div class="jobs_conetent">
+                <a href="{% url 'wera_detail' j.pk %}">
                   <h4>{{ j.title }}</h4>
                 </a>
                 <div class="links_locat d-flex align-items-center">
                   <div class="location">
-                    <p><i class="fa fa-map-marker"></i>{{ j.location }}</p>
+                    <p><i class="bi bi-map-marker"></i>{{ j.location }}</p>
                   </div>
                   <div class="location">
-                    <p><i class="fa fa-clock-o"></i>{{ j.Wera_type }}</p>
+                    <p><i class="bi bi-clock-o"></i>{{ j.Wera_type }}</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="Weras_right">
+            <div class="jobs_right">
               <div class="apply_now">
-                <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
-                <a href="{% url 'Weradetail' %}" class="boxed-btn3"
-                  >apply now</a
-                >
+                <a class="heart_mark" href="#"> <i class="bi bi-heart"></i> </a>
               </div>
               <div class="date">
-                <p>{{ j.deadline }}</p>
+                <p>{{ j.created_at }}</p>
               </div>
             </div>
           </div>
@@ -143,7 +141,7 @@
       </div>
       <div class="col-lg-6 col-md-6">
         <div class="brouse_Wera text-right">
-          <a href="Weras.html" class="boxed-btn4">Browse More Wera</a>
+          <a href="" class="boxed-btn4">Browse More</a>
         </div>
       </div>
     </div>

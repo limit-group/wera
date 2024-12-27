@@ -72,7 +72,7 @@ MIDDLEWARE = [
     "allauth.account.middleware.AccountMiddleware",
 ]
 
-ROOT_URLCONF = "core.urls"
+ROOT_URLCONF = "config.urls"
 
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
@@ -108,7 +108,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "core.wsgi.application"
+WSGI_APPLICATION = "config.wsgi.application"
 
 
 # Database
@@ -183,3 +183,5 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = "email"

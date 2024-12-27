@@ -17,7 +17,7 @@ def weras(request):
     weras = Wera.get_weras()
     categories = Category.get_categories()
     return render(
-        request, "wera/weras.html", {"weras": weras, "categories": categories}
+        request, "wera/index.html", {"weras": weras, "categories": categories}
     )
 
 
@@ -26,13 +26,17 @@ def wera_detail(request, pk):
     categories = Category.get_categories()
     return render(
         request,
-        "wera/weradetails.html",
+        "wera/detail.html",
         {"wera": wera, "categories": categories},
     )
 
 
-@verified_email_required
+# @verified_email_required
 def wera_create_view(request):
+    categories = Category.get_categories()
+    ctx = {
+        'categories': categories
+    }
     if request.method == "POST":
         form = WeraForm(request.POST)
         if form.is_valid():
@@ -41,4 +45,5 @@ def wera_create_view(request):
             return redirect("weras")
     else:
         form = WeraForm()
-    return render(request, "wera/wera_create.html", {"form": form})
+        ctx['form'] = form
+    return render(request, "wera/create.html", ctx)
