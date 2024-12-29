@@ -1,6 +1,6 @@
 {% extends 'wera/base.html' %} {% block content %}
 
-<div class="d-flex min-vh-100 align-items-center justify-content-center">
+<div class="d-flex align-items-center justify-content-center">
   <div class="container bg-white p-4 shadow rounded" style="max-width: 500px">
     <h2 class="text-center mb-4">
       Posting a Wera with us is free, and you can post as many Wera postings as
@@ -23,7 +23,12 @@
       </div>
       <div class="mb-3">
         <label for="location" class="form-label">Location</label>
-        <input type="text" class="form-control" name="location" id="location" />
+        <select class="form-select" name="location" id="location">
+          <option value="">Select Location</option>
+          {% for l in locations %}
+          <option value="{{ l.id }}">{{ l.name }}</option>
+          {% endfor %}
+        </select>
       </div>
       <div class="mb-3">
         <label for="category" class="form-label">Category</label>

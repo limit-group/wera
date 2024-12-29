@@ -831,19 +831,19 @@
       }
 
       /* line 117, ../../Arafath/CL/December/235. Job board/HTML/scss/_header.scss */
-      .header-area .main-header-area .Appointment .socail_links ul li {
+      .header-area .main-header-area .Appointment .social_links ul li {
         display: inline-block;
       }
 
       /* line 120, ../../Arafath/CL/December/235. Job board/HTML/scss/_header.scss */
-      .header-area .main-header-area .Appointment .socail_links ul li a {
+      .header-area .main-header-area .Appointment .social_links ul li a {
         color: #a8a7a0;
         margin: 0 10px;
         font-size: 15px;
       }
 
       /* line 124, ../../Arafath/CL/December/235. Job board/HTML/scss/_header.scss */
-      .header-area .main-header-area .Appointment .socail_links ul li a:hover {
+      .header-area .main-header-area .Appointment .social_links ul li a:hover {
         color: #fff;
       }
 
@@ -2042,19 +2042,19 @@
       }
 
       /* line 168, ../../Arafath/CL/December/235. Job board/HTML/scss/_footer.scss */
-      .footer .socail_links {
+      .footer .social_links {
         margin-top: 47px;
       }
 
       @media (max-width: 767px) {
         /* line 168, ../../Arafath/CL/December/235. Job board/HTML/scss/_footer.scss */
-        .footer .socail_links {
+        .footer .social_links {
           margin-top: 30px;
         }
       }
 
       /* line 174, ../../Arafath/CL/December/235. Job board/HTML/scss/_footer.scss */
-      .footer .socail_links ul li {
+      .footer .social_links ul li {
         display: inline-block;
         -webkit-transition: 0.3s;
         -moz-transition: 0.3s;
@@ -2063,7 +2063,7 @@
       }
 
       /* line 177, ../../Arafath/CL/December/235. Job board/HTML/scss/_footer.scss */
-      .footer .socail_links ul li a {
+      .footer .social_links ul li a {
         font-size: 15px;
         width: 40px;
         height: 40px;
@@ -2087,7 +2087,7 @@
       }
 
       /* line 193, ../../Arafath/CL/December/235. Job board/HTML/scss/_footer.scss */
-      .footer .socail_links ul li a i {
+      .footer .social_links ul li a i {
         font-size: 15px;
         line-height: 40px;
         position: relative;
@@ -2095,7 +2095,7 @@
       }
 
       /* line 201, ../../Arafath/CL/December/235. Job board/HTML/scss/_footer.scss */
-      .footer .socail_links ul li:hover a {
+      .footer .social_links ul li:hover a {
         color: #fff !important;
         border-color: transparent;
       }
@@ -6603,7 +6603,7 @@
     <!-- header-start -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <a href="#" class="navbar-brand"> Wera </a>
+        <a href="{% url 'home' %}" class="navbar-brand"> Wera </a>
         <button
           class="navbar-toggler"
           type="button"
@@ -6617,15 +6617,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a
-                href="{% url 'home' %}"
-                class="nav-link active"
-                aria-current="page"
-                style="text-decoration: none"
-                >Home</a
-              >
-            </li>
             <li class="nav-item">
               <a
                 href="{% url 'form_mtaani' %}"
@@ -6681,7 +6672,7 @@
         </div>
       </div>
     </nav>
-    <div class="container p-2">{% block content %} {% endblock %}</div>
+    <div class="container min-vh-100">{% block content %} {% endblock %}</div>
     <footer class="footer bg-dark text-white">
       <div class="footer_top">
         <div class="container">
@@ -6694,7 +6685,7 @@
                   +254 759 701 314 <br />
                   Kilimani, Nairobi
                 </p>
-                <div class="socail_links">
+                <div class="social_links">
                   <ul>
                     <li>
                       <a href="#">

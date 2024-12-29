@@ -1,5 +1,5 @@
 {% extends 'wera/base.html' %} {% block content %}
-<div class="container min-vh-100 d-flex ">
+<div class="container d-flex">
   <div class="row w-100">
     <!-- Form Column -->
     <div class="col-md-6 p-4">
@@ -30,8 +30,13 @@
           </div>
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="location">Location</label>
-              <input class="form-control" name="location" id="location" type="text" />
+              <label for="location" class="form-label">Location</label>
+              <select class="form-select" name="location" id="location">
+                <option value="">Select Location</option>
+                {% for l in locations %}
+                <option value="{{ l.id }}">{{ l.name }}</option>
+                {% endfor %}
+              </select>
             </div>
           </div>
           <div class="col-sm-6">

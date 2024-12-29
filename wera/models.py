@@ -4,6 +4,16 @@ from django.db import models
 User = get_user_model()
 
 
+class Location(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self) -> str:
+        return self.name
+
+    def get_locations():
+        return Location.objects.all()
+
+
 class Category(models.Model):
     name = models.CharField(max_length=255)
 
@@ -26,7 +36,9 @@ class Wera(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255)
     description = models.TextField()
-    location = models.CharField(max_length=255)
+    location = models.ForeignKey(
+        "Location", on_delete=models.CASCADE, null=True, blank=True
+    )
     image = models.TextField(null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 

@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 
 from form_mtaani.forms import FormMtaaniForm
 from form_mtaani.models import Category, FormMtaani
+from wera.models import Location
 
 
 def form_mtaani(request):
@@ -16,7 +17,7 @@ def form_mtaani(request):
 
 
 def form_mtaani_detail(request, pk):
-    form_mtaani = form_mtaani.objects.get_or_404(pk=pk)
+    form_mtaani = FormMtaani.get_or_404(pk=pk)
     categories = Category.get_categories()
     return render(
         request,
@@ -28,7 +29,8 @@ def form_mtaani_detail(request, pk):
 # @verified_email_required
 def form_mtaani_create(request):
     categories = Category.get_categories()
-    ctx = {"categories": categories}
+    locations = Location.get_locations()
+    ctx = {"categories": categories, "lcations": locations}
     if request.method == "POST":
         form = FormMtaaniForm(request.POST)
         if form.is_valid():
