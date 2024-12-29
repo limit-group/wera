@@ -22,6 +22,7 @@ static/grappelli/
 static/grappeli/*
 static/
 notebooks
+staticfiles/
 
 # Include tracked hidden files and directories in search and diff tools
 !.dockerignore
