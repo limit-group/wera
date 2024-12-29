@@ -1,24 +1,32 @@
-{% extends 'wera/base.html' %} {% block content %}
+{% extends 'wera/base.html' %} 
+{% block content %}
 
-<div class="text-end">
-  <a href="{% url  'form_mtaani_create' %}" class="btn btn-primary"
-    >Know about a form?</a
-  >
-</div>
-<h1>Form Mtaani</h1>
-<p>Share about any job findings...</p>
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Form Mtaani</h1>
+    <a href="{% url 'form_mtaani_create' %}" class="btn btn-primary">Know about a form?</a>
+  </div>
 
-<div class="align-items-center justify-content-center">
-  <div class="card w-75">
-    <div class="card-header">Marketing | Nairobi</div>
-    <div class="card-body">
-      <p class="card-text">
-        With supporting text below as a natural lead-in to additional content.
-      </p>
+  <p class="lead mb-4 text-center">Share about any job findings...</p>
+
+  <div class="row g-4">
+    <div class="col-12">
+      <div class="card w-75 mx-auto shadow-sm">
+        <div class="card-header bg-primary text-white">
+          Marketing | Nairobi
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            With supporting text below as a natural lead-in to additional content.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
+
+  <div class="text-center pt-3">
+    <button class="btn btn-outline-primary">Load more...</button>
+  </div>
 </div>
-<div class="text-center pt-3">
-  <button class="btn btn-primary">Load more...</button>
-</div>
+
 {% endblock %}

@@ -32,7 +32,8 @@ def wera_detail(request, pk):
 
 
 # @verified_email_required
-def wera_create_view(request):
+def wera_create(request):
+    breakpoint()
     categories = Category.get_categories()
     ctx = {
         'categories': categories

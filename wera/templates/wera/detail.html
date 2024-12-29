@@ -1,25 +1,36 @@
 {% extends 'wera/base.html' %} {% load static %} {% block content %}
 
-<div class="job_details_area">
-    {% if wera %}
+<div class="job_details_area py-5">
+  {% if wera %}
+  <div class="container">
     <div class="row">
-      <div class="col-lg-8">
-        <div class="job_details_header">
-          <div class="single_jobs white-bg d-flex justify-content-between">
+      <div class="col-lg-8 mb-4">
+        <div class="job_details_header shadow-sm p-4 rounded bg-white">
+          <div class="single_jobs d-flex justify-content-between">
             <div class="jobs_left d-flex align-items-center">
               <div class="thumb">
-                <img src="{% static 'img/avatar.png' %}" alt=""  width="50" height="50"/>
+                <img
+                  src="{% static 'img/avatar.png' %}"
+                  alt="Company Logo"
+                  width="50"
+                  height="50"
+                  class="rounded-circle"
+                />
               </div>
-              <div class="jobs_conetent">
+              <div class="jobs_content ms-3">
                 <a href="#">
-                  <h4>{{ wera.title }}</h4>
+                  <h4 class="text-primary">{{ wera.title }}</h4>
                 </a>
-                <div class="links_locat d-flex align-items-center">
-                  <div class="location">
-                    <p><i class="bi bi-map-marker"></i> {{ wera.location }}</p>
+                <div class="links_locat d-flex align-items-center mt-2">
+                  <div class="location me-4">
+                    <p class="m-0">
+                      <i class="bi bi-geo-alt"></i> {{ wera.location }}
+                    </p>
                   </div>
-                  <div class="location">
-                    <p><i class="bi bi-clock-o"></i>{{ wera.wera_type }}</p>
+                  <div class="category">
+                    <p class="m-0">
+                      <i class="bi bi-tags"></i> {{ wera.category.name }}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -31,46 +42,66 @@
             </div>
           </div>
         </div>
-        <div class="descript_wrap white-bg">
+
+        <div class="descript_wrap mt-4 shadow-sm p-4 rounded bg-white">
           <div class="single_wrap">
-            <h4>Description</h4>
+            <h4 class="text-primary">Description</h4>
             <p>{{ wera.description }}</p>
           </div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <div class="job_sumary">
-          <div class="summery_header">
-            <h3>Summary</h3>
+
+      <div class="col-lg-4 mb-4">
+        <div class="job_summary shadow-sm p-4 rounded bg-white">
+          <div class="summary_header">
+            <h3 class="text-primary">Summary</h3>
           </div>
           <div class="job_content">
-            <ul>
-              <li>Published On: <span>{{ wera.created_at }}</span></li>
-              <li>Category: <span>{{ wera.category.name }}</span></li>
-              <li>Location: <span>{{ wera.location }}</span></li>
+            <ul class="list-unstyled">
+              <li>
+                Published On:
+                <span class="text-muted">{{ wera.created_at }}</span>
+              </li>
+              <li>
+                Category:
+                <span class="text-muted">{{ wera.category.name }}</span>
+              </li>
+              <li>
+                Location: <span class="text-muted">{{ wera.location }}</span>
+              </li>
             </ul>
           </div>
         </div>
-        <div class="share_wrap d-flex">
-          <span>Share At:</span>
-          <ul>
-            <li>
-              <a href="#"> <i class="bi bi-facebook"></i></a>
+
+        <div class="share_wrap d-flex mt-4">
+          <span class="me-2">Share At:</span>
+          <ul class="list-unstyled d-flex">
+            <li class="me-3">
+              <a href="#" class="text-decoration-none">
+                <i class="bi bi-facebook"></i
+              ></a>
+            </li>
+            <li class="me-3">
+              <a href="#" class="text-decoration-none">
+                <i class="bi bi-google"></i
+              ></a>
+            </li>
+            <li class="me-3">
+              <a href="#" class="text-decoration-none">
+                <i class="bi bi-twitter"></i
+              ></a>
             </li>
             <li>
-              <a href="#"> <i class="bi bi-google"></i></a>
-            </li>
-            <li>
-              <a href="#"> <i class="bi bi-twitter-x"></i></a>
-            </li>
-            <li>
-              <a href="#"> <i class="bi bi-envelope"></i></a>
+              <a href="#" class="text-decoration-none">
+                <i class="bi bi-envelope"></i
+              ></a>
             </li>
           </ul>
         </div>
       </div>
     </div>
-    {% endif %}
+  </div>
+  {% endif %}
 </div>
 
 {% endblock %}
