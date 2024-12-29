@@ -28,9 +28,14 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 SECRET_KEY = "django-insecure-^^t$n&9aazj%l2g^9kkc8palf9rfg_$$yytzau7so46+6qip+5"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".pythonanywhere.com"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    ".pythonanywhere.com",
+    "wera-ytx7.onrender.com",
+]
 
 
 # Application definition
