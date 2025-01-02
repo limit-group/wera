@@ -5,6 +5,15 @@ from wera.forms import WeraForm
 from wera.models import Category, Location, Wera
 
 
+def search_wera(request):
+    query = request.GET.get("query")
+    weras = Wera.objects.filter(title__icontains=query)
+    categories = Category.get_categories()
+    return render(
+        request, "wera/index.html", {"weras": weras, "categories": categories}
+    )
+
+
 def index(request):
     weras = Wera.get_weras()
     categories = Category.get_categories()
@@ -22,7 +31,7 @@ def weras(request):
 
 
 def wera_detail(request, pk):
-    wera = Wera.objects.get(pk=pk)
+    wera = Wera.objects.filter(pk=pk).select_related("category").first()
     categories = Category.get_categories()
     return render(
         request,
@@ -31,11 +40,12 @@ def wera_detail(request, pk):
     )
 
 
-# @verified_email_required
+@verified_email_required
 def wera_create(request):
     categories = Category.get_categories()
     locations = Location.get_locations()
-    ctx = {"categories": categories, "locations": locations}
+    weras = Wera.get_weras()
+    ctx = {"categories": categories, "locations": locations, "weras": weras}
     if request.method == "POST":
         form = WeraForm(request.POST)
         if form.is_valid():

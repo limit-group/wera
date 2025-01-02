@@ -1,8 +1,11 @@
+from allauth.account.decorators import verified_email_required
+
 from django.shortcuts import redirect, render
 
 from contact_me.forms import ContactMeForm
 
 
+@verified_email_required
 def contact(request):
     if request.method == "POST":
         form = ContactMeForm(request.POST)
@@ -13,4 +16,3 @@ def contact(request):
     else:
         form = ContactMeForm()
     return render(request, "contact_me/contact.html", {"form": form})
-

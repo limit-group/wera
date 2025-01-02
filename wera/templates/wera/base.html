@@ -6634,40 +6634,51 @@
                 >Contacts</a
               >
             </li>
-            <li class="nav-item">
-              <a
-                href="{% url 'wera_create' %}"
-                class="nav-link"
-                style="text-decoration: none"
-                >Post</a
-              >
-            </li>
-
-            <li class="nav-item mx-3">
-              {% if user.is_authenticated %}
-              <a
-                href="{% url 'contact_me' %}"
-                class="nav-link btn btn-outline-light"
-                style="text-decoration: none"
-                >{{user.username}}</a
-              >
-              {% else %}
-              <a
-                href="{% url 'account_login' %} "
-                class="btn btn-primary btn-outline-white"
-                >Login</a
-              >
-              {% endif %}
-            </li>
+        
             {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {{user.username}}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" href="{% url 'contact_detail' user.id %}">My Profile</a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="{% url 'account_logout' %}"
+                    class="btn btn-danger btn-outline-white"
+                    >Logout</a
+                  >
+                </li>
+              </ul>
+            </li>
+            {% else %}
             <li class="nav-item">
               <a
-                href="{% url 'account_logout' %}"
-                class="btn btn-danger btn-outline-white nav-link"
-                >Logout</a
+                href="{% url 'account_login' %}"
+                class="nav-link btn btn-primary btn-outline-white"
+                >Login</a
               >
             </li>
             {% endif %}
+            <li class="nav-item">
+              <a
+                href="{% url 'wera_create' %}"
+                class="nav-link btn btn-outline-light"
+                style="text-decoration: none"
+                >Post Wera</a
+              >
+            </li>
           </ul>
         </div>
       </div>

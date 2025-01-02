@@ -1,18 +1,12 @@
 {% extends 'wera/base.html' %} {% block content %}
-<div class="container d-flex">
+<div class="d-flex container">
   <div class="row w-100">
     <!-- Form Column -->
     <div class="col-md-6 p-4">
       <h2 class="text-center mb-4">Tell others about a form in your mtaa</h2>
-      <form method="post" novalidate="novalidate">
+      <form method="post" action="{% url 'form_mtaani_create' %}" novalidate>
         {% csrf_token %}
         <div class="row g-2">
-          <div class="col-12 mb-2">
-            <div class="form-group">
-              <label for="title">Title</label>
-              <input class="form-control" name="title" id="title" type="text" />
-            </div>
-          </div>
           <div class="col-12 mb-2">
             <div class="form-group">
               <label for="description">Description</label>
@@ -60,14 +54,41 @@
     <!-- Posted Data Column -->
     <div class="col-md-6 p-4 rounded">
       <h2 class="text-center mb-4">Form Mtaani</h2>
-      {% if form_mtaani %}
-      <ul class="list-group">
-        {% for post in form_mtaani %}
-        <li class="list-group-item">
-          <h5>{{ post.title }}</h5>
-          <p>{{ post.description }}</p>
-          <small class="text-muted">Location: {{ post.location }}</small>
-        </li>
+      {% if form_mtaanis %}
+        {% for j in form_mtaanis %}
+        <div class="col-lg-12 mb-4">
+          <div
+            class="single_jobs white-bg d-flex justify-content-between align-items-center shadow-sm p-4 rounded"
+          >
+            <div class="jobs_left d-flex align-items-center">
+              <div class="jobs_content">
+                <a href="{% url 'form_mtaani_detail' j.pk %}">
+                  <h4 class="text-primary">{{ j.form }}</h4>
+                </a>
+                <div class="links_locat d-flex align-items-center mt-2">
+                  <div class="location me-4">
+                    <p class="m-0">
+                      <i class="bi bi-geo-alt"></i> {{ j.location }}
+                    </p>
+                  </div>
+                  <div class="category">
+                    <p class="m-0">
+                      <i class="bi bi-tags"></i> {{ j.category.name }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="jobs_right d-flex align-items-center">
+              <div class="apply_now me-3">
+                <a class="heart_mark" href="#"> <i class="bi bi-heart"></i> </a>
+              </div>
+              <div class="date">
+                <p class="text-muted">{{ j.created_at }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
         {% endfor %}
       </ul>
       {% else %}

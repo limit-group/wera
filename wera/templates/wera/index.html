@@ -1,46 +1,53 @@
 {% extends 'wera/base.html' %} {% load static %} {% block content %}
 
-<!-- Category Area -->
 <div class="category_area py-5">
-  <div class="container">
+  <div class="">
     <div class="row cat_search mb-4">
-      <div class="col-lg-3 col-md-4 mb-3">
-        <div class="single_input">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Search Keyword"
-          />
+      <!-- <form action="{% url 'search_wera' %}" method="get">
+        {% csrf_token %} -->
+        <div class="col-lg-3 col-md-4 mb-3">
+          <div class="single_input">
+            <input
+              type="text"
+              id="query"
+              name="query"
+              class="form-control"
+              placeholder="Search Keyword"
+            />
+          </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-4 mb-3">
-        <div class="single_input">
-          <select class="form-select">
-            <option data-display="Location">Location</option>
-            <option value="1">Nairobi</option>
-            <option value="2">Kisumu</option>
-            <option value="3">Nakuru</option>
-            <option value="4">Mombasa</option>
-          </select>
+        <div class="col-lg-3 col-md-4 mb-3">
+          <div class="single_input">
+            <select class="form-select">
+              <option data-display="Location">Location</option>
+              {% for l in locations %}
+              <option value="{{ l.id }}" id="location" name="location">
+                {{ l.name }}
+              </option>
+              {% endfor %}
+            </select>
+          </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-4 mb-3">
-        <div class="single_input">
-          <select class="form-select">
-            <option data-display="Category">Category</option>
-            {% for c in categories %}
-            <option value="{{ c.id }}">{{ c.name }}</option>
-            {% endfor %}
-          </select>
+        <div class="col-lg-3 col-md-4 mb-3">
+          <div class="single_input">
+            <select class="form-select">
+              <option data-display="Category">Category</option>
+              {% for c in categories %}
+              <option value="{{ c.id }}" id="category" name="category">
+                {{ c.name }}
+              </option>
+              {% endfor %}
+            </select>
+          </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-12 mb-3">
-        <div class="Wera_btn">
-          <a href="#" class="btn btn-primary w-100">
-            <i class="bi bi-search-heart"></i> Search</a
-          >
+        <div class="col-lg-3 col-md-12 mb-3">
+          <div class="">
+            <button type="submit" class="btn btn-primary w-100">
+              <i class="bi bi-search-heart"></i> Search
+            </button>
+          </div>
         </div>
-      </div>
+      <!-- </form> -->
     </div>
     <div class="row">
       <div class="col-lg-12">
@@ -76,7 +83,7 @@
 </div>
 
 <!-- Job Listing Area -->
-<div class="job_listing_area py-5">
+<div class="job_listing_area">
   <div class="container">
     <div class="job_lists">
       <div class="row">
@@ -120,7 +127,7 @@
   </div>
 </div>
 
-<div class="top_companies_area py-5">
+<!-- <div class="top_companies_area py-5">
   <div class="container">
     <div class="row align-items-center mb-40">
       <div class="col-lg-6 col-md-6">
@@ -157,6 +164,6 @@
       {% endfor %}
     </div>
   </div>
-</div>
+</div> -->
 
 {% endblock %}

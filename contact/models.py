@@ -1,6 +1,10 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 from wera.models import Location
+
+User = get_user_model()
+
 
 """
 Contacts page is what will bring businesses (employers) to our platform. 
@@ -24,6 +28,7 @@ class Contact(models.Model):
     image = models.TextField(null=True, blank=True)
     rating = models.IntegerField(null=True, blank=True)
     review = models.TextField(null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.name

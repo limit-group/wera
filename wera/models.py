@@ -41,9 +41,10 @@ class Wera(models.Model):
     )
     image = models.TextField(null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self) -> str:
         return self.title
 
     def get_weras():
-        return Wera.objects.all()
+        return Wera.objects.order_by("-updated_at").select_related("location", "category")

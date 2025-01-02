@@ -41,12 +41,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    "wera",
-    "contact",
-    "contact_me",
-    "newsletter",
-    "form_mtaani",
-    "jazzmin",
+
     "django_browser_reload",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -60,6 +55,11 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
+    "wera.apps.WeraConfig",
+    "contact",
+    "contact_me",
+    "newsletter",
+    "form_mtaani",
 ]
 
 
@@ -191,3 +191,10 @@ AUTHENTICATION_BACKENDS = [
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = "email"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
+EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
