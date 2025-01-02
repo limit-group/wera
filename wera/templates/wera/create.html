@@ -6,7 +6,7 @@
       Posting a Wera with us is free, and you can post as many Wera postings as
       you want
     </h2>
-    <form method="POST" action="{% url 'wera_create_view' %}" novalidate>
+    <form method="POST" action="{% url 'wera_create' %}" novalidate>
       {% csrf_token %}
       <div class="mb-3">
         <label for="title" class="form-label">Wera Title</label>
