@@ -41,7 +41,6 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-
     "django_browser_reload",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -54,7 +53,7 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    "allauth.socialaccount.providers.google",
+    # "allauth.socialaccount.providers.google",
     "wera.apps.WeraConfig",
     "contact",
     "contact_me",
@@ -100,7 +99,7 @@ LOGOUT_REDIRECT_URL = "/"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [BASE_DIR / "templates" / "allauth"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -191,6 +190,8 @@ AUTHENTICATION_BACKENDS = [
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = "email"
+
+ACCOUNT_FORMS = {"signup": "wera.forms.CustomSignupForm"}
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
