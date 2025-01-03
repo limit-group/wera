@@ -172,9 +172,8 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-STATIC_URL = "/static/"
-# if not DEBUG:
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_URL = os.getenv("STATIC_URL", default="/static/")
+STATIC_ROOT = os.getenv("STATIC_ROOT", default=BASE_DIR / "staticfiles")
 
 # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
 # and renames the files with unique names for each version to support long-term caching
@@ -183,6 +182,13 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_AUTOREFRESH = DEBUG
+
+
+MEDIA_ROOT = os.getenv("MEDIA_ROOT", default=BASE_DIR / "media")
+MEDIA_URL = os.getenv("MEDIA_PATH", default="/media/")
 
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
@@ -201,34 +207,35 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
 EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
 
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {"console": {"class": "logging.StreamHandler"}},
+    "loggers": {"": {"handlers": ["console"], "level": "DEBUG"}},
+}
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
 # PWA settings
 PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, "staticfiles/js", "serviceworker.js")
-PWA_APP_NAME = 'wera'
+PWA_APP_NAME = "wera"
 PWA_APP_DESCRIPTION = "Wera PWA"
-PWA_APP_THEME_COLOR = '#000000'
-PWA_APP_BACKGROUND_COLOR = '#ffffff'
-PWA_APP_DISPLAY = 'standalone'
-PWA_APP_SCOPE = '/'
-PWA_APP_ORIENTATION = 'any'
-PWA_APP_START_URL = '/'
-PWA_APP_STATUS_BAR_COLOR = 'default'
-PWA_APP_ICONS = [
-    {
-        'src': 'staticfiles/img/favicon-32x32.png',
-        'sizes': '32x32'
-    }
-]
+PWA_APP_THEME_COLOR = "#000000"
+PWA_APP_BACKGROUND_COLOR = "#ffffff"
+PWA_APP_DISPLAY = "standalone"
+PWA_APP_SCOPE = "/"
+PWA_APP_ORIENTATION = "any"
+PWA_APP_START_URL = "/"
+PWA_APP_STATUS_BAR_COLOR = "default"
+PWA_APP_ICONS = [{"src": "staticfiles/img/favicon-32x32.png", "sizes": "32x32"}]
 PWA_APP_ICONS_APPLE = [
-    {
-        'src': 'staticfiles/img/apple-touch-icon.png',
-        'sizes': '160x160'
-    }
+    {"src": "staticfiles/img/apple-touch-icon.png", "sizes": "160x160"}
 ]
 PWA_APP_SPLASH_SCREEN = [
     {
-        'src': 'staticfiles/img/favicon-16x16.png',
-        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+        "src": "staticfiles/img/favicon-16x16.png",
+        "media": "(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)",
     }
 ]
-PWA_APP_DIR = 'ltr'
-PWA_APP_LANG = 'en-US'
+PWA_APP_DIR = "ltr"
+PWA_APP_LANG = "en-US"
