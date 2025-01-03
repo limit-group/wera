@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path("", include("wera.urls")),
@@ -26,6 +27,8 @@ urlpatterns = [
     path("", include("newsletter.urls")),
     path("", include("contact_me.urls")),
     path("", include("form_mtaani.urls")),
+    path("", include("pwa.urls")),
+    path("favicon.ico", RedirectView.as_view(url="/staticfiles/img/favicon.ico")),
     path("admin/", admin.site.urls),
     path("accounts/", include("allauth.urls")),
     path("__reload__/", include("django_browser_reload.urls")),

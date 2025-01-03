@@ -11,6 +11,7 @@ django-allauth-themes==0.1.2
 django-browser-reload==1.15.0
 django-debug-toolbar==4.4.6
 django-extensions==3.2.3
+django-pwa==2.0.1
 gunicorn==23.0.0
 h11==0.14.0
 idna==3.10

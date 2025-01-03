@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     "contact_me",
     "newsletter",
     "form_mtaani",
+    "pwa",
 ]
 
 
@@ -199,3 +200,35 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
 EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
+
+# PWA settings
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, "staticfiles/js", "serviceworker.js")
+PWA_APP_NAME = 'wera'
+PWA_APP_DESCRIPTION = "Wera PWA"
+PWA_APP_THEME_COLOR = '#000000'
+PWA_APP_BACKGROUND_COLOR = '#ffffff'
+PWA_APP_DISPLAY = 'standalone'
+PWA_APP_SCOPE = '/'
+PWA_APP_ORIENTATION = 'any'
+PWA_APP_START_URL = '/'
+PWA_APP_STATUS_BAR_COLOR = 'default'
+PWA_APP_ICONS = [
+    {
+        'src': 'staticfiles/img/favicon-32x32.png',
+        'sizes': '32x32'
+    }
+]
+PWA_APP_ICONS_APPLE = [
+    {
+        'src': 'staticfiles/img/apple-touch-icon.png',
+        'sizes': '160x160'
+    }
+]
+PWA_APP_SPLASH_SCREEN = [
+    {
+        'src': 'staticfiles/img/favicon-16x16.png',
+        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+    }
+]
+PWA_APP_DIR = 'ltr'
+PWA_APP_LANG = 'en-US'
