@@ -8,36 +8,33 @@ from wera.models import Location
 
 def form_mtaani(request):
     form_mtaanis = FormMtaani.get_form_mtaanis()
-    categories = Category.get_categories()
-    return render(
-        request,
-        "form_mtaani/index.html",
-        {"form_mtaanis": form_mtaanis, "categories": categories},
-    )
+    footer_categories = Category.get_categories()[:3]
+
+    ctx = {"form_mtaanis": form_mtaanis, "footer_categories": footer_categories}
+    return render(request, "form_mtaani/index.html", ctx)
 
 
 def form_mtaani_detail(request, pk):
     form_mtaani = FormMtaani.objects.filter(pk=pk).select_related(
         "location", "category"
     )
-    categories = Category.get_categories()
-    return render(
-        request,
-        "form_mtaani/detail.html",
-        {"form_mtaani": form_mtaani, "categories": categories},
-    )
+    footer_categories = Category.get_categories()[:3]
+
+    ctx = {"form_mtaani": form_mtaani, "footer_categories": footer_categories}
+    return render(request, "form_mtaani/detail.html", ctx)
 
 
 @verified_email_required
 def form_mtaani_create(request):
-    categories = Category.get_categories()
+    footer_categories = Category.get_categories()[:3]
     locations = Location.get_locations()
     form_mtaanis = FormMtaani.get_form_mtaanis()
     ctx = {
-        "categories": categories,
+        "footer_categories": footer_categories,
         "locations": locations,
         "form_mtaanis": form_mtaanis,
     }
+
     if request.method == "POST":
         form = FormMtaaniForm(request.POST)
         if form.is_valid():

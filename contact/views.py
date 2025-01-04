@@ -3,13 +3,15 @@ from django.shortcuts import render
 from common.utils import upload_to_supabase_bucket
 from contact.forms import ContactForm
 from contact.models import Contact
+from wera.models import Category
 
 
 def contact(request):
     ctx = {}
     if request.method == "GET":
         contacts = Contact.objects.all()
-        ctx = {"contacts": contacts}
+        footer_categories = Category.get_categories()[:4]
+        ctx = {"contacts": contacts, "footer_categories": footer_categories}
         return render(request, "contact/index.html", ctx)
 
     if request.method == "POST":
@@ -24,12 +26,12 @@ def contact(request):
                 except Exception as e:
                     ctx["error"] = f"Image upload failed: {str(e)}"
                     return render(request, "contact/create.html", ctx)
-            
+
             ctc.image = image_url
             ctc.save()
-                       
+
             return render(request, "contact/index.html")
-        
+
         form = ContactForm()
         ctx = {"form": form}
         return render(request, "contact/index.html", ctx)
