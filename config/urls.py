@@ -21,6 +21,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic.base import RedirectView
 
+handler404 = "wera.views.error_404"
+handler500 = "wera.views.error_500"
+
+
 urlpatterns = [
     path("", include("wera.urls")),
     path("", include("contact.urls")),
@@ -28,7 +32,7 @@ urlpatterns = [
     path("", include("contact_me.urls")),
     path("", include("form_mtaani.urls")),
     path("", include("pwa.urls")),
-    path("favicon.ico", RedirectView.as_view(url="/staticfiles/img/favicon.ico")),
+    path("favicon.ico", RedirectView.as_view(url="/staticfiles/images/favicon.ico")),
     path("admin/", admin.site.urls),
     path("accounts/", include("allauth.urls")),
     path("__reload__/", include("django_browser_reload.urls")),

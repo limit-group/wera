@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from wera.models import Category, Location
+from wera.models import Category, Location, WeraBaseModel
 
 User = get_user_model()
 
@@ -18,15 +18,12 @@ iii) Not exceed 30 words (for easy reading)
 """
 
 
-class FormMtaani(models.Model):
+class FormMtaani(WeraBaseModel):
     form = models.CharField(max_length=30)
     location = location = models.ForeignKey(
         Location, on_delete=models.CASCADE, null=True, blank=True
     )
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self) -> str:
         return self.form

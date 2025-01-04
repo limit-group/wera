@@ -8,15 +8,17 @@
         <div class="job_details_header shadow-sm p-4 rounded bg-white">
           <div class="single_jobs d-flex justify-content-between">
             <div class="jobs_left d-flex align-items-center">
+              {% if wera.image %}
               <div class="thumb">
                 <img
-                  src="{% static 'img/avatar.png' %}"
-                  alt="Company Logo"
+                  src="{{ wera.image }}"
+                  alt="{{ wera.title }}"
                   width="50"
                   height="50"
                   class="rounded-circle"
                 />
               </div>
+              {% endif %}
               <div class="jobs_content ms-3">
                 <a href="#">
                   <h4 class="text-primary">{{ wera.title }}</h4>
