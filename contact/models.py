@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
-from wera.models import Location
+from wera.models import Location, WeraBaseModel
 
 User = get_user_model()
 
@@ -15,9 +15,7 @@ The users could rate the profiles and review them.
 """
 
 
-class Contact(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+class Contact(WeraBaseModel):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=100)
@@ -28,7 +26,6 @@ class Contact(models.Model):
     image = models.TextField(null=True, blank=True)
     rating = models.IntegerField(null=True, blank=True)
     review = models.TextField(null=True, blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.name

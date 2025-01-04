@@ -217,7 +217,6 @@ LOGGING = {
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # PWA settings
-PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, "staticfiles/js", "serviceworker.js")
 PWA_APP_NAME = "wera"
 PWA_APP_DESCRIPTION = "Wera PWA"
 PWA_APP_THEME_COLOR = "#000000"
@@ -227,15 +226,10 @@ PWA_APP_SCOPE = "/"
 PWA_APP_ORIENTATION = "any"
 PWA_APP_START_URL = "/"
 PWA_APP_STATUS_BAR_COLOR = "default"
-PWA_APP_ICONS = [{"src": "staticfiles/img/favicon-32x32.png", "sizes": "32x32"}]
-PWA_APP_ICONS_APPLE = [
-    {"src": "staticfiles/img/apple-touch-icon.png", "sizes": "160x160"}
-]
-PWA_APP_SPLASH_SCREEN = [
-    {
-        "src": "staticfiles/img/favicon-16x16.png",
-        "media": "(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)",
-    }
-]
 PWA_APP_DIR = "ltr"
 PWA_APP_LANG = "en-US"
+
+
+SUPABASE_SERVICE_ROLE_KEY = os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
+SUPABASE_URL = os.environ.get("SUPABASE_URL")
+SUPABASE_BUCKET = os.environ.get("SUPABASE_BUCKET")

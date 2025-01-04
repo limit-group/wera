@@ -4,7 +4,7 @@
     <!-- Form Column -->
     <div class="col-md-6 p-4">
       <h2 class="text-center mb-4">Tell others about a form in your mtaa</h2>
-      <form method="post" action="{% url 'form_mtaani_create' %}" novalidate>
+      <form method="post" action="{% url 'form_mtaani_create' %}">
         {% csrf_token %}
         <div class="row g-2">
           <div class="col-12 mb-2">
@@ -16,6 +16,7 @@
                 id="description"
                 cols="30"
                 rows="5"
+                required
               ></textarea>
             </div>
             <div id="help" class="form-text">
@@ -25,7 +26,7 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label for="location" class="form-label">Location</label>
-              <select class="form-select" name="location" id="location">
+              <select class="form-select" name="location" id="location" required>
                 <option value="">Select Location</option>
                 {% for l in locations %}
                 <option value="{{ l.id }}">{{ l.name }}</option>
@@ -36,7 +37,7 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label for="category">Category</label>
-              <select name="category" id="category" class="form-select">
+              <select name="category" id="category" class="form-select" required>
                 <option value="" selected>Select Category</option>
                 {% for c in categories %}
                 <option value="{{ c.id }}">{{ c.name }}</option>
