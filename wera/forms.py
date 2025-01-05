@@ -1,14 +1,11 @@
 from django import forms
 
+
+from common.choices import ACCOUNT_TYPE_CHOICES
 from wera.models import Wera
+from contact.models import Contact
 
 from allauth.account.forms import SignupForm
-
-
-ACCOUNT_TYPE_CHOICES = (
-    ("BUSINESS", "Business"),
-    ("INDIVIDUAL", "Individual"),
-)
 
 
 class CustomSignupForm(SignupForm):
@@ -20,8 +17,12 @@ class CustomSignupForm(SignupForm):
 
     def save(self, request):
         user = super().save(request)
-        user.account_type = self.cleaned_data["account_type"]
-        user.save()
+    
+
+        Contact.objects.create(
+            user=user,
+            account_type=self.cleaned_data["account_type"],
+        )
         return user
 
 

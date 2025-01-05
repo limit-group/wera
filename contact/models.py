@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+
+from common.choices import ACCOUNT_TYPE_CHOICES
 from wera.models import Location, WeraBaseModel
 
 User = get_user_model()
@@ -16,16 +18,20 @@ The users could rate the profiles and review them.
 
 
 class Contact(WeraBaseModel):
-    name = models.CharField(max_length=100)
-    email = models.EmailField()
-    phone = models.CharField(max_length=100)
-    location = models.ForeignKey(
-        Location, on_delete=models.CASCADE, null=True, blank=True
-    )
-    work = models.CharField(max_length=100)
+    phone = models.CharField(max_length=100, null=True, blank=True)
+    work = models.CharField(max_length=100, null=True, blank=True)
     image = models.TextField(null=True, blank=True)
     rating = models.IntegerField(null=True, blank=True)
     review = models.TextField(null=True, blank=True)
+    account_type = models.CharField(
+        max_length=25, null=True, blank=True, choices=ACCOUNT_TYPE_CHOICES
+    )
+    location = models.ForeignKey(
+        Location, on_delete=models.CASCADE, null=True, blank=True
+    )
 
     def __str__(self):
-        return self.name
+        return self.user.get_full_name()
+    
+    class Meta:
+        unique_together = ("user", "account_type")
