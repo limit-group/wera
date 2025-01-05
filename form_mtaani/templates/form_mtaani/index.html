@@ -19,18 +19,18 @@
         <div class="jobs_left d-flex align-items-center">
           <div class="jobs_content">
             <a href="{% url 'form_mtaani_detail' j.pk %}">
-              <h4 class="text-primary">{{ j.form }}</h4>
+              <p class="text-primary">{{ j.form }}</p>
             </a>
             <div class="links_locat d-flex align-items-center mt-2">
               <div class="location me-4">
-                <p class="m-0">
+                <small class="m-0">
                   <i class="bi bi-geo-alt"></i> {{ j.location }}
-                </p>
+                </small>
               </div>
               <div class="category">
-                <p class="m-0">
+                <small class="m-0">
                   <i class="bi bi-tags"></i> {{ j.category.name }}
-                </p>
+                </small>
               </div>
             </div>
           </div>
@@ -40,7 +40,7 @@
             <a class="heart_mark" href="#"> <i class="bi bi-heart"></i> </a>
           </div>
           <div class="date">
-            <p class="text-muted">{{ j.created_at }}</p>
+            <small class="text-muted">{{ j.created_at }}</small>
           </div>
         </div>
       </div>

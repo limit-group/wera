@@ -1,6 +1,6 @@
 {% extends 'wera/base.html' %} {% load static %} {% block content %}
 
-<div class="job_details_area py-5">
+<div class="job_details_area pt-5">
   {% if wera %}
   <div class="container">
     <div class="row">
@@ -20,19 +20,17 @@
               </div>
               {% endif %}
               <div class="jobs_content ms-3">
-                <a href="#">
-                  <h4 class="text-primary">{{ wera.title }}</h4>
-                </a>
+                  <p class="text-primary">{{ wera.title }}</p>
                 <div class="links_locat d-flex align-items-center mt-2">
                   <div class="location me-4">
-                    <p class="m-0">
+                    <small class="m-0">
                       <i class="bi bi-geo-alt"></i> {{ wera.location }}
-                    </p>
+                    </small>
                   </div>
                   <div class="category">
-                    <p class="m-0">
+                    <small class="m-0">
                       <i class="bi bi-tags"></i> {{ wera.category.name }}
-                    </p>
+                    </small>
                   </div>
                 </div>
               </div>
