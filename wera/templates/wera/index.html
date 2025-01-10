@@ -47,13 +47,8 @@
                 </div>
               </div>
               <div class="jobs_right d-flex align-items-center">
-                <div class="apply_now me-3">
-                  <a class="heart_mark" href="#">
-                    <i class="bi bi-heart"></i>
-                  </a>
-                </div>
                 <div class="date">
-                  <small class="text-muted">{{ j.created_at }}</small>
+                  <small class="text-muted"data-created-at="{{ j.created_at|date:'c' }}"></small>
                 </div>
               </div>
             </div>

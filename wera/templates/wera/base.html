@@ -201,7 +201,6 @@
         z-index: -1;
       }
 
-
       .section-padding {
         padding-top: 120px;
         padding-bottom: 120px;
@@ -211,7 +210,6 @@
         padding-top: 120px;
       }
 
-      
       .mb-20px {
         margin-bottom: 20px;
       }
@@ -1900,6 +1898,7 @@
         });
       });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
       integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
@@ -1910,5 +1909,16 @@
       integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
       crossorigin="anonymous"
     ></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const timeago = window.timeago;
+        const elements = document.querySelectorAll(".date small");
+
+        elements.forEach((el) => {
+          const timestamp = el.getAttribute("data-created-at");
+          el.textContent = timeago.format(new Date(timestamp));
+        });
+      });
+    </script>
   </body>
 </html>

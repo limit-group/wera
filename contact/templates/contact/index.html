@@ -8,6 +8,7 @@
   <div class="row g-4">
     <!-- Profile Card -->
     {% for profile in contacts %}
+    {% if profile.phone %}
     <div class="col-md-6 col-lg-6">
       <div class="card h-100 shadow-sm border-0">
         {% if profile.image %}
@@ -30,6 +31,7 @@
         </div>
       </div>
     </div>
+    {% endif %}
     {% empty %}
     <div class="col-12 text-center">
       <p class="text-muted">No profiles found. Please check back later!</p>
