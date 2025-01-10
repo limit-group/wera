@@ -27,10 +27,12 @@ def form_mtaani_detail(request, pk):
 @verified_email_required
 def form_mtaani_create(request):
     footer_categories = Category.get_categories()[:3]
+    categories = Category.get_categories()
     locations = Location.get_locations()
     form_mtaanis = FormMtaani.get_form_mtaanis()
     ctx = {
         "footer_categories": footer_categories,
+        "categories": categories,
         "locations": locations,
         "form_mtaanis": form_mtaanis,
     }

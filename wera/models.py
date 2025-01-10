@@ -33,7 +33,7 @@ class Category(WeraBaseModel):
 
     @classmethod
     def get_categories(cls):
-        return cls.objects.order_by("-updated_at")[:5]
+        return cls.objects.order_by("-updated_at")
 
 
 """
