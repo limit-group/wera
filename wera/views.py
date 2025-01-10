@@ -2,7 +2,7 @@ from allauth.account.decorators import verified_email_required
 from django.shortcuts import redirect, render
 
 from common.utils import upload_to_supabase_bucket
-from wera.forms import ContactForm, WeraForm
+from wera.forms import ContactForm, NewsletterForm, WeraForm
 from wera.models import Category, Location, Wera
 
 
@@ -90,6 +90,22 @@ def report_a_problem(request):
         form = ContactForm()
     return render(request, "wera/report_a_problem.html", {"form": form})
 
+def newsletter_subscription(request):
+    categories = Category.get_categories()
+    locations = Location.get_locations()
+    weras = Wera.get_weras()
+    ctx = {"categories": categories, "locations": locations, "weras": weras}
+
+    if request.method == "POST":
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+    else:
+        form = NewsletterForm()
+        ctx["form"] = form
+        
+    return render(request, "wera/index.html", ctx)
 
 def privacy_policy(request):
     return render(request, "wera/privacy_policy.html")

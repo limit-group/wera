@@ -9,7 +9,7 @@ from wera.models import Category
 def contact(request):
     ctx = {}
     if request.method == "GET":
-        contacts = Contact.objects.all()
+        contacts = Profile.objects.all()
         footer_categories = Category.get_categories()[:4]
         ctx = {"contacts": contacts, "footer_categories": footer_categories}
         return render(request, "contact/index.html", ctx)

@@ -2,6 +2,7 @@ from django import forms
 
 
 from common.choices import ACCOUNT_TYPE_CHOICES
+from wera.models import Newsletter
 from wera.models import Contact, Wera
 from contact.models import Profile
 
@@ -37,3 +38,11 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
         fields = "__all__"
+
+class NewsletterForm(forms.ModelForm):
+    class Meta:
+        model = Newsletter
+        fields = ["email", "is_subscribed"]
+        widgets = {
+            "email": forms.EmailInput(attrs={"placeholder": "Email address"}),
+        }

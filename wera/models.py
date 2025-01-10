@@ -16,6 +16,12 @@ class WeraBaseModel(models.Model):
     class Meta:
         abstract = True
 
+
+class Newsletter(WeraBaseModel):
+    email = models.EmailField(max_length=254, unique=True)
+    is_subscribed = models.BooleanField(default=True)
+
+
 class Contact(WeraBaseModel):
     message = models.TextField()
     name = models.CharField(max_length=255)

@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     "wera.apps.WeraConfig",
     "contact",
     "contact_me",
-    "newsletter",
     "form_mtaani",
     "pwa",
 ]

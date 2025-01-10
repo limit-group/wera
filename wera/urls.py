@@ -3,6 +3,7 @@ from django.urls import path
 from wera.views import (
     cookie_policy,
     index,
+    newsletter_subscription,
     privacy_policy,
     report_a_problem,
     weras,
@@ -22,4 +23,5 @@ urlpatterns = [
     path("cookie-policy/", cookie_policy, name="cookie_policy"),
     path("advertising/", advertising, name="advertising"),
     path("report-a-problem/", report_a_problem, name="report_a_problem"),
+    path("newsletters", newsletter_subscription, name="newsletter_create"),
 ]

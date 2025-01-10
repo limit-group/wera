@@ -37,7 +37,6 @@ handler500 = "wera.views.error_500"
 urlpatterns = [
     path("", include("wera.urls")),
     path("", include("contact.urls")),
-    path("", include("newsletter.urls")),
     path("", include("form_mtaani.urls")),
     path("", include("pwa.urls")),
     path("favicon.ico", RedirectView.as_view(url="/staticfiles/images/favicon.ico")),
