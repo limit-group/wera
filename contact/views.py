@@ -1,8 +1,8 @@
 from django.shortcuts import render
 
 from common.utils import upload_to_supabase_bucket
-from contact.forms import ContactForm
-from contact.models import Contact
+from contact.forms import ProfileForm
+from contact.models import Profile
 from wera.models import Category
 
 
@@ -15,7 +15,7 @@ def contact(request):
         return render(request, "contact/index.html", ctx)
 
     if request.method == "POST":
-        form = ContactForm(request.POST, request.FILES)
+        form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
             ctc = form.save(commit=False)
             ctc.user = request.user
@@ -32,12 +32,12 @@ def contact(request):
 
             return render(request, "contact/index.html")
 
-        form = ContactForm()
+        form = ProfileForm()
         ctx = {"form": form}
         return render(request, "contact/index.html", ctx)
 
 
 def contact_detail(request, user_id):
-    contact = Contact.objects.get(user=user_id)
-    ctx = {"contact": contact}
-    return render(request, "contact/detail.html", ctx)
+    profile = Profile.objects.get(user=user_id)
+    ctx = {"profile": profile}
+    return render(request, "profile/detail.html", ctx)

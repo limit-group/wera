@@ -17,7 +17,7 @@ The users could rate the profiles and review them.
 """
 
 
-class Contact(WeraBaseModel):
+class Profile(WeraBaseModel):
     phone = models.CharField(max_length=100, null=True, blank=True)
     work = models.CharField(max_length=100, null=True, blank=True)
     image = models.TextField(null=True, blank=True)

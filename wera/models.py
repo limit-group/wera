@@ -16,6 +16,15 @@ class WeraBaseModel(models.Model):
     class Meta:
         abstract = True
 
+class Contact(WeraBaseModel):
+    message = models.TextField()
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    subject = models.CharField(max_length=255)
+
+    def __str__(self) -> str:
+        return self.name
+
 
 class Location(WeraBaseModel):
     name = models.CharField(max_length=255)

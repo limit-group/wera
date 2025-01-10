@@ -22,20 +22,22 @@ from django.conf.urls.static import static
 from django.views.generic.base import RedirectView
 from django.contrib.sitemaps.views import sitemap
 
-from common.sitemap import FormMtaaniSiteMap, WeraSiteMap
+from common.sitemap import FormMtaaniSiteMap, StaticViewSitemap, WeraSiteMap
+
+sitemaps = {
+    "weras": WeraSiteMap,
+    "form_mtaani": FormMtaaniSiteMap,
+    "static": StaticViewSitemap,
+}
 
 
 handler404 = "wera.views.error_404"
 handler500 = "wera.views.error_500"
 
-sitemaps = {"weras": WeraSiteMap, "form_mtaani": FormMtaaniSiteMap}
-
-
 urlpatterns = [
     path("", include("wera.urls")),
     path("", include("contact.urls")),
     path("", include("newsletter.urls")),
-    path("", include("contact_me.urls")),
     path("", include("form_mtaani.urls")),
     path("", include("pwa.urls")),
     path("favicon.ico", RedirectView.as_view(url="/staticfiles/images/favicon.ico")),

@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from contact.models import Contact
+from contact.models import Profile
 
-@admin.register(Contact)
-class ContactAdmin(admin.ModelAdmin):
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
     pass

@@ -2,8 +2,8 @@ from django import forms
 
 
 from common.choices import ACCOUNT_TYPE_CHOICES
-from wera.models import Wera
-from contact.models import Contact
+from wera.models import Contact, Wera
+from contact.models import Profile
 
 from allauth.account.forms import SignupForm
 
@@ -20,7 +20,7 @@ class CustomSignupForm(SignupForm):
         user = super().save(request)
     
 
-        Contact.objects.create(
+        Profile.objects.create(
             user=user,
             account_type='INDIVIDUAL',
         )
@@ -30,4 +30,10 @@ class CustomSignupForm(SignupForm):
 class WeraForm(forms.ModelForm):
     class Meta:
         model = Wera
+        fields = "__all__"
+
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
         fields = "__all__"

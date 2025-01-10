@@ -1,8 +1,8 @@
-from contact.models import Contact
+from contact.models import Profile
 from django import forms
 
 
-class ContactForm(forms.Form):
+class ProfileForm(forms.Form):
     class Meta:
-        model = Contact
+        model = Profile
         fields = "__all__"
