@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.urls import reverse
 from wera.models import Category, Location, WeraBaseModel
 
 User = get_user_model()
@@ -25,8 +26,14 @@ class FormMtaani(WeraBaseModel):
     )
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ["updated_at"]
+
     def __str__(self) -> str:
         return self.form
 
     def get_form_mtaanis():
         return FormMtaani.objects.select_related("location", "category").all()
+
+    def get_absolute_url(self):
+        return reverse("form_mtaani_detail", args=[str(self.id)])

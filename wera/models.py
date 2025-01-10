@@ -1,10 +1,12 @@
 from django.contrib.auth import get_user_model
+from django.urls import reverse
 from supabase import create_client
 from django.conf import settings
 import os
 from django.db import models
 
 User = get_user_model()
+
 
 class WeraBaseModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -52,11 +54,26 @@ class Wera(WeraBaseModel):
     image = models.TextField(null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
+    _metadata = {
+        "title": "name",
+        "description": "abstract",
+        "image": "get_meta_image",
+    }
+
+    class Meta:
+        ordering = ["updated_at"]
 
     def __str__(self) -> str:
         return self.title
+
+    def get_meta_image(self):
+        if self.image:
+            return self.image
 
     def get_weras():
         return Wera.objects.order_by("-updated_at").select_related(
             "location", "category"
         )
+
+    def get_absolute_url(self):
+        return reverse("wera_detail", args=[str(self.id)])
