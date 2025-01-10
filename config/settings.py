@@ -58,7 +58,6 @@ INSTALLED_APPS = [
     # "allauth.socialaccount.providers.google",
     "wera.apps.WeraConfig",
     "contact",
-    "contact_me",
     "form_mtaani",
     "pwa",
 ]
