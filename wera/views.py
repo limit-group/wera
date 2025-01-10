@@ -71,7 +71,7 @@ def wera_create(request):
 
             wera.image = image_url
             wera.save()
-            return redirect("weras")
+            return render(request, "wera/index.html", ctx)
     else:
         form = WeraForm()
         ctx["form"] = form
