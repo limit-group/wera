@@ -9,11 +9,12 @@ from allauth.account.forms import SignupForm
 
 
 class CustomSignupForm(SignupForm):
-    account_type = forms.ChoiceField(
-        label="Account Type (type BUSINESS or INDIVIDUAL)",
-        choices=ACCOUNT_TYPE_CHOICES,
-        widget=forms.Select(attrs={"class": "form-control"}),
-    )
+    # L
+    # account_type = forms.ChoiceField(
+    #     label="Account Type (type BUSINESS or INDIVIDUAL)",
+    #     choices=ACCOUNT_TYPE_CHOICES,
+    #     widget=forms.Select(attrs={"class": "form-control"}),
+    # )
 
     def save(self, request):
         user = super().save(request)
@@ -21,7 +22,7 @@ class CustomSignupForm(SignupForm):
 
         Contact.objects.create(
             user=user,
-            account_type=self.cleaned_data["account_type"],
+            account_type='INDIVIDUAL',
         )
         return user
 

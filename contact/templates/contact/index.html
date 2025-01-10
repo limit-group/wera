@@ -8,13 +8,15 @@
   <div class="row g-4">
     <!-- Profile Card -->
     {% for profile in contacts %}
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-6 col-lg-6">
       <div class="card h-100 shadow-sm border-0">
+        {% if profile.image %}
         <img
         src="{{ profile.image }}"
           class="card-img-top rounded-circle"
           alt="{{ profile.name }}"
         />
+        {% endif %}
         <div class="card-body d-flex flex-column">
           <h5 class="card-title text-center">{{ profile.name }}</h5>
           <p class="card-text text-muted">
