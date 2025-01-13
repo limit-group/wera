@@ -35,3 +35,8 @@ class Profile(WeraBaseModel):
     
     class Meta:
         unique_together = ("user", "account_type")
+
+
+    @classmethod
+    def get_profile_by_user_id(cls, user):
+        return cls.objects.filter(user=user).first()

@@ -1,0 +1,113 @@
+{% extends 'wera/base.html' %}
+{% block content %}
+
+<div class="container pt-3">
+  <p class="text-center fw-bold">My Profile</p>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label for="first_name" class="form-label">Firstname</label>
+        <input
+          type="text"
+          class="form-control"
+          id="first_name"
+          name="first_name"
+          value="{{ profile.user.first_name }}"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="last_name" class="form-label">Lastname</label>
+        <input
+          type="text"
+          class="form-control"
+          id="last_name"
+          name="last_name"
+          value="{{ profile.user.last_name }}"
+          required
+        />
+      </div>
+
+    <div class="mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input
+          type="tel"
+          class="form-control"
+          id="phone"
+          name="phone"
+          placeholder="e.g. +254 712 345 678"
+          value="{{ profile.phone }}"
+          required
+        />
+      </div>
+
+    <div class="mb-3">
+        <label for="work" class="form-label">Work</label>
+        <textarea
+          class="form-control"
+          id="work"
+          name="work"
+          rows="3"
+        >{{ profile.work }}</textarea>
+      </div>
+
+    <div class="mb-3">
+      <label for="image" class="form-label">Profile Image</label>
+      {% if profile.image %}
+      <div class="mb-2">
+        <img
+          src="{{ profile.image }}"
+          alt="{{ profile.name }}"
+          class="rounded-circle"
+          style="width: 100px; height: 100px;"
+        />
+      </div>
+      {% endif %}
+      <input
+        type="file"
+        class="form-control"
+        id="image"
+        name="image"
+        accept="image/*"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="account_type" class="form-label">Account Type</label>
+      <select
+        class="form-select"
+        id="account_type"
+        name="account_type"
+      >
+        <option value="">Select Account Type</option>
+        {% for choice, display in account_type_choices %}
+        <option value="{{ choice }}" {% if profile.account_type == choice %}selected{% endif %}>
+          {{ display }}
+        </option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="location" class="form-label">Location</label>
+      <select
+        class="form-select"
+        id="location"
+        name="location"
+      >
+        <option value="">Select Location</option>
+        {% for location in locations %}
+        <option value="{{ location.id }}" {% if profile.location and profile.location.id == location.id %}selected{% endif %}>
+          {{ location.name }}
+        </option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+  </form>
+</div>
+
+{% endblock %}

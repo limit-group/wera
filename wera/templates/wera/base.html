@@ -1863,7 +1863,15 @@
     <div class="container min-vh-100">
       <div class="d-flex justify-content-center align-items-center">
         <div class="feed-container w-100" style="max-width: 600px">
-          {% if messages %} {% for message in messages %}
+          {% if not profile.phone %}
+          <div class="pt-2">
+            <div class="alert alert-warning">
+              Your profile is incomplete;
+              <a href="{% url 'contact_detail' user.id %}">Click Here</a> to
+              update your profile.
+            </div>
+          </div>
+          {% endif %} {% if messages %} {% for message in messages %}
           <div class="pt-2">
             <div class="alert alert-info">{{ message }}</div>
           </div>
@@ -1885,7 +1893,9 @@
         >
         <small><a href="{%  url 'privacy_policy' %}">Privacy Policy</a></small>
         <small><a href="{%  url 'cookie_policy' %}">Cookie Policy</a></small>
-        <small><a href="{%  url 'report_a_problem' %}">Report a problem</a></small>
+        <small
+          ><a href="{%  url 'report_a_problem' %}">Report a problem</a></small
+        >
         <small><a href="{%  url 'advertising' %}">Advertising</a></small>
       </div>
     </footer>
