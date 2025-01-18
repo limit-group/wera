@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     "wera.apps.WeraConfig",
     "contact",
     "form_mtaani",
-    "pwa",
 ]
 
 
@@ -215,20 +214,6 @@ LOGGING = {
 }
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-
-# PWA settings
-PWA_APP_NAME = "wera"
-PWA_APP_DESCRIPTION = "Wera PWA"
-PWA_APP_THEME_COLOR = "#000000"
-PWA_APP_BACKGROUND_COLOR = "#ffffff"
-PWA_APP_DISPLAY = "standalone"
-PWA_APP_SCOPE = "/"
-PWA_APP_ORIENTATION = "any"
-PWA_APP_START_URL = "/"
-PWA_APP_STATUS_BAR_COLOR = "default"
-PWA_APP_DIR = "ltr"
-PWA_APP_LANG = "en-US"
-
 
 SUPABASE_SERVICE_ROLE_KEY = os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
 SUPABASE_URL = os.environ.get("SUPABASE_URL")
