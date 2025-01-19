@@ -38,7 +38,6 @@ urlpatterns = [
     path("", include("wera.urls")),
     path("", include("contact.urls")),
     path("", include("form_mtaani.urls")),
-    path("", include("pwa.urls")),
     path("favicon.ico", RedirectView.as_view(url="/staticfiles/images/favicon.ico")),
     path("admin/", admin.site.urls),
     path(
