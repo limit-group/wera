@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="google-site-verification"
-      content="upiWnQCrcA2W_wkLtEPxSNzDKIAaBZQEeoDlPiMaX-M"
+      content="iR7w2Hn7SM_mz3PI0EkYZAQykNZnbOu_Phq4m12NNLs"
     />
     <link
       rel="stylesheet"
@@ -1861,8 +1861,7 @@
     <div class="container min-vh-100">
       <div class="d-flex justify-content-center align-items-center">
         <div class="feed-container w-100" style="max-width: 600px">
-          {% if user.is_authenticated %}
-          {% if not profile.phone %}
+          {% if user.is_authenticated %} {% if not profile.phone %}
           <div class="pt-2">
             <div class="alert alert-warning">
               Your profile is incomplete;
@@ -1870,9 +1869,8 @@
               update your profile.
             </div>
           </div>
-          {% endif %}
-          {% endif %}
-           {% if messages %} {% for message in messages %}
+          {% endif %} {% endif %} {% if messages %} {% for message in messages
+          %}
           <div class="pt-2">
             <div class="alert alert-info">{{ message }}</div>
           </div>
