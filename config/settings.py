@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     ".pythonanywhere.com",
     "wera-ytx7.onrender.com",
+    "www.wera.co.ke"
 ]
 
 
