@@ -12,6 +12,7 @@ from wera.views import (
     search_wera,
     advertising,
 )
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path("", index, name="home"),
@@ -24,4 +25,10 @@ urlpatterns = [
     path("advertising/", advertising, name="advertising"),
     path("report-a-problem/", report_a_problem, name="report_a_problem"),
     path("newsletters", newsletter_subscription, name="newsletter_create"),
+    path(
+        "robots.txt",
+        TemplateView.as_view(
+            template_name="wera/robots.txt", content_type="text/plain"
+        ),
+    ),
 ]
