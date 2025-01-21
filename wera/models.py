@@ -3,6 +3,7 @@ from django.urls import reverse
 from supabase import create_client
 from django.conf import settings
 import os
+from django.utils.text import slugify
 from django.db import models
 
 User = get_user_model()
@@ -68,18 +69,26 @@ class Wera(WeraBaseModel):
     )
     image = models.TextField(null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-
-    _metadata = {
-        "title": "name",
-        "description": "abstract",
-        "image": "get_meta_image",
-    }
+    slug = models.SlugField(unique=True, blank=True, null=True)
 
     class Meta:
         ordering = ["updated_at"]
 
     def __str__(self) -> str:
         return self.title
+
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.title)
+            slug = base_slug
+            counter = 1
+            while Wera.objects.filter(slug=slug).exists():
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
+
 
     def get_meta_image(self):
         if self.image:
@@ -91,4 +100,4 @@ class Wera(WeraBaseModel):
         )
 
     def get_absolute_url(self):
-        return reverse("wera_detail", args=[str(self.id)])
+        return reverse("wera_detail", args=[str(self.slug)])

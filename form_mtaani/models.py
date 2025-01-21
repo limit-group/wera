@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from wera.models import Category, Location, WeraBaseModel
+from django.utils.text import slugify
+
 
 User = get_user_model()
 
@@ -36,4 +38,4 @@ class FormMtaani(WeraBaseModel):
         return FormMtaani.objects.select_related("location", "category").all()
 
     def get_absolute_url(self):
-        return reverse("form_mtaani_detail", args=[str(self.id)])
+        return reverse("form_mtaani_detail", args=[str(self.pk)])

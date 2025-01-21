@@ -6,6 +6,7 @@ from wera.models import Category, Location, Wera
 @admin.register(Wera)
 class WeraAdmin(admin.ModelAdmin):
     list_display = ("title", "created_at", "updated_at", "location", "category")
+    prepopulated_fields = {"slug": ("title",)}
     readonly_fields = ("image_preview",)
 
     def image_preview(self, obj):
