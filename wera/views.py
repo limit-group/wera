@@ -38,9 +38,7 @@ def weras(request):
 
 def wera_detail(request, slug):
     wera = Wera.objects.filter(slug=slug).select_related("category").first()
-    ctx = {
-        "wera": wera,
-    }
+    ctx = {"wera": wera}
 
     return render(request, "wera/detail.html", ctx)
 
