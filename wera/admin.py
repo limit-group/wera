@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from wera.models import Category, Location, Wera
+from django.utils.html import format_html
 
 
 @admin.register(Wera)
