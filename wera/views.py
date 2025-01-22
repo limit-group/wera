@@ -1,10 +1,18 @@
-from allauth.account.decorators import verified_email_required
+from allauth.account.decorators import verified_email_required, login_required
 from django.shortcuts import redirect, render
 
 from common.utils import upload_to_supabase_bucket
 from contact.models import Profile
 from wera.forms import ContactForm, NewsletterForm, WeraForm
 from wera.models import Category, Location, Wera
+
+
+def get_current_user_profile(request):
+    return (
+        Profile.get_profile_by_user_id(request.user)
+        if request.user.is_authenticated
+        else None
+    )
 
 
 def search_wera(request):
@@ -19,11 +27,11 @@ def index(request):
     weras = Wera.get_weras()
     locations = Location.get_locations()
 
-    profile = None
-    if request.user.is_authenticated:
-        profile = Profile.get_profile_by_user_id(request.user)
-
-    ctx = {"locations": locations, "weras": weras, "profile": profile}
+    ctx = {
+        "locations": locations,
+        "weras": weras,
+        "profile": get_current_user_profile(request),
+    }
     return render(request, "wera/index.html", ctx)
 
 
@@ -31,14 +39,19 @@ def weras(request):
     weras = Wera.get_weras()
     ctx = {
         "wera": weras,
+        "profile": get_current_user_profile(request),
     }
 
     return render(request, "wera/index.html", ctx)
 
 
+@login_required
 def wera_detail(request, slug):
     wera = Wera.objects.filter(slug=slug).select_related("category").first()
-    ctx = {"wera": wera}
+    ctx = {
+        "wera": wera,
+        "profile": get_current_user_profile(request),
+    }
 
     return render(request, "wera/detail.html", ctx)
 
@@ -53,6 +66,7 @@ def wera_create(request):
         "categories": categories,
         "locations": locations,
         "weras": weras,
+        "profile": get_current_user_profile(request),
     }
 
     if request.method == "POST":
@@ -78,6 +92,9 @@ def wera_create(request):
 
 
 def report_a_problem(request):
+    ctx = {
+        "profile": get_current_user_profile(request),
+    }
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -87,7 +104,8 @@ def report_a_problem(request):
     else:
         form = ContactForm()
 
-    return render(request, "wera/report_a_problem.html", {"form": form})
+    ctx["form"] = form
+    return render(request, "wera/report_a_problem.html", ctx)
 
 
 def newsletter_subscription(request):
@@ -95,7 +113,12 @@ def newsletter_subscription(request):
     locations = Location.get_locations()
     weras = Wera.get_weras()
 
-    ctx = {"categories": categories, "locations": locations, "weras": weras}
+    ctx = {
+        "categories": categories,
+        "locations": locations,
+        "weras": weras,
+        "profile": get_current_user_profile(request),
+    }
 
     if request.method == "POST":
         form = NewsletterForm(request.POST)
@@ -110,20 +133,35 @@ def newsletter_subscription(request):
 
 
 def privacy_policy(request):
-    return render(request, "wera/privacy_policy.html")
+    ctx = {
+        "profile": get_current_user_profile(request),
+    }
+    return render(request, "wera/privacy_policy.html", ctx)
 
 
 def cookie_policy(request):
-    return render(request, "wera/cookie_policy.html")
+    ctx = {
+        "profile": get_current_user_profile(request),
+    }
+    return render(request, "wera/cookie_policy.html", ctx)
 
 
 def advertising(request):
-    return render(request, "wera/advertising.html")
+    ctx = {
+        "profile": get_current_user_profile(request),
+    }
+    return render(request, "wera/advertising.html", ctx)
 
 
 def error_404(request, exception):
-    return render(request, "wera/error_404.html", status=404)
+    ctx = {
+        "profile": get_current_user_profile(request),
+    }
+    return render(request, "wera/error_404.html", ctx, status=404)
 
 
 def error_500(request):
-    return render(request, "wera/error_505.html", status=500)
+    ctx = {
+        "profile": get_current_user_profile(request),
+    }
+    return render(request, "wera/error_505.html", ctx, status=500)
