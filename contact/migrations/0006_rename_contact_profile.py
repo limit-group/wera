@@ -7,14 +7,14 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('contact', '0005_alter_contact_unique_together'),
-        ('wera', '0005_alter_wera_options_contact'),
+        ("contact", "0005_alter_contact_unique_together"),
+        ("wera", "0005_alter_wera_options_contact"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='Contact',
-            new_name='Profile',
+            old_name="Contact",
+            new_name="Profile",
         ),
     ]

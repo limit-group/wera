@@ -1,10 +1,11 @@
-from django.contrib.auth import get_user_model
-from django.urls import reverse
-from supabase import create_client
-from django.conf import settings
 import os
-from django.utils.text import slugify
+
+from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.db import models
+from django.urls import reverse
+from django.utils.text import slugify
+from supabase import create_client
 
 User = get_user_model()
 
@@ -54,14 +55,13 @@ class Category(WeraBaseModel):
         return cls.objects.order_by("-updated_at")
 
 
-"""
-Wera is a section of the home page where full time employment posts can be posted. 
-Posting on the page is however restricted to users who've registered as businesses. 
-The post should contain images, location and the type of job.
-"""
-
-
 class Wera(WeraBaseModel):
+    """
+    Wera is a section of the home page where full time employment posts can be posted.
+    Posting on the page is however restricted to users who've registered as businesses.
+    The post should contain images, location and the type of job.
+    """
+
     title = models.CharField(max_length=255)
     description = models.TextField()
     location = models.ForeignKey(
@@ -77,7 +77,6 @@ class Wera(WeraBaseModel):
     def __str__(self) -> str:
         return self.title
 
-
     def save(self, *args, **kwargs):
         if not self.slug:
             base_slug = slugify(self.title)
@@ -88,7 +87,6 @@ class Wera(WeraBaseModel):
                 counter += 1
             self.slug = slug
         super().save(*args, **kwargs)
-
 
     def get_meta_image(self):
         if self.image:

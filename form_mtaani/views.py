@@ -15,9 +15,9 @@ def form_mtaani(request):
 
 
 def form_mtaani_detail(request, pk):
-    form_mtaani = FormMtaani.objects.filter(pk=pk).select_related(
-        "location", "category"
-    ).first()
+    form_mtaani = (
+        FormMtaani.objects.filter(pk=pk).select_related("location", "category").first()
+    )
 
     ctx = {
         "form_mtaani": form_mtaani,

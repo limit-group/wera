@@ -9,20 +9,33 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('wera', '0001_initial'),
+        ("wera", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='FormMtaani',
+            name="FormMtaani",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('form', models.CharField(max_length=30)),
-                ('location', models.CharField(max_length=30)),
-                ('Wera_type', models.CharField(max_length=30)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('uppdated_at', models.DateTimeField(auto_now=True)),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='wera.category')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("form", models.CharField(max_length=30)),
+                ("location", models.CharField(max_length=30)),
+                ("Wera_type", models.CharField(max_length=30)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("uppdated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="wera.category"
+                    ),
+                ),
             ],
         ),
     ]

@@ -7,14 +7,19 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('contact', '0001_initial'),
-        ('wera', '0002_location_alter_wera_location'),
+        ("contact", "0001_initial"),
+        ("wera", "0002_location_alter_wera_location"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='contact',
-            name='location',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='wera.location'),
+            model_name="contact",
+            name="location",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="wera.location",
+            ),
         ),
     ]

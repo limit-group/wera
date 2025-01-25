@@ -1,7 +1,7 @@
 from django.contrib import admin
+from django.utils.html import format_html
 
 from wera.models import Category, Location, Wera
-from django.utils.html import format_html
 
 
 @admin.register(Wera)
@@ -14,6 +14,7 @@ class WeraAdmin(admin.ModelAdmin):
         if obj.image:
             return format_html('<img src="{}" style="max-height: 100px;" />', obj.image)
         return "-"
+
     image_preview.short_description = "Image Preview"
 
 

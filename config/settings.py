@@ -15,7 +15,6 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -35,13 +34,14 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     ".pythonanywhere.com",
     "wera-ytx7.onrender.com",
-    "www.wera.co.ke"
+    "www.wera.co.ke",
 ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    "grappelli",
     "django_browser_reload",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     # "allauth.socialaccount.providers.google",
-    "wera.apps.WeraConfig",
+    "wera",
     "contact",
     "form_mtaani",
 ]

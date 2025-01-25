@@ -6,13 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('contact', '0006_rename_contact_profile'),
+        ("contact", "0006_rename_contact_profile"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='profile',
-            name='account_type',
-            field=models.CharField(blank=True, choices=[('BUSINESS', 'Business'), ('Personal', 'Personal')], max_length=25, null=True),
+            model_name="profile",
+            name="account_type",
+            field=models.CharField(
+                blank=True,
+                choices=[("BUSINESS", "Business"), ("Personal", "Personal")],
+                max_length=25,
+                null=True,
+            ),
         ),
     ]

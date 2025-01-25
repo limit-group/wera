@@ -7,24 +7,31 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Contact',
+            name="Contact",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('name', models.CharField(max_length=100)),
-                ('email', models.EmailField(max_length=254)),
-                ('phone', models.CharField(max_length=100)),
-                ('location', models.CharField(max_length=100)),
-                ('work', models.CharField(max_length=100)),
-                ('image', models.TextField(blank=True, null=True)),
-                ('rating', models.IntegerField(blank=True, null=True)),
-                ('review', models.TextField(blank=True, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("name", models.CharField(max_length=100)),
+                ("email", models.EmailField(max_length=254)),
+                ("phone", models.CharField(max_length=100)),
+                ("location", models.CharField(max_length=100)),
+                ("work", models.CharField(max_length=100)),
+                ("image", models.TextField(blank=True, null=True)),
+                ("rating", models.IntegerField(blank=True, null=True)),
+                ("review", models.TextField(blank=True, null=True)),
             ],
         ),
     ]

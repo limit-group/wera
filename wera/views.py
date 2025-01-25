@@ -1,4 +1,4 @@
-from allauth.account.decorators import verified_email_required, login_required
+from allauth.account.decorators import login_required, verified_email_required
 from django.shortcuts import redirect, render
 
 from common.utils import upload_to_supabase_bucket
@@ -38,11 +38,11 @@ def index(request):
 def weras(request):
     weras = Wera.get_weras()
 
-    location = request.GET.get('location')
-    category = request.GET.get('category')
-    job_type = request.GET.get('job_type')
-    min_salary = request.GET.get('min_salary')
-    max_salary = request.GET.get('max_salary')
+    location = request.GET.get("location")
+    category = request.GET.get("category")
+    job_type = request.GET.get("job_type")
+    min_salary = request.GET.get("min_salary")
+    max_salary = request.GET.get("max_salary")
 
     if location:
         weras = weras.filter(location__icontains=location)
@@ -59,7 +59,7 @@ def weras(request):
     ctx = {
         "wera": weras,
         "profile": get_current_user_profile(request),
-        "categories": categories
+        "categories": categories,
     }
 
     return render(request, "wera/index.html", ctx)

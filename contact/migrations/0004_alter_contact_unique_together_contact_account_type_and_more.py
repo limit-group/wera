@@ -7,32 +7,37 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('contact', '0003_contact_user'),
+        ("contact", "0003_contact_user"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='contact',
-            name='account_type',
-            field=models.CharField(blank=True, choices=[('BUSINESS', 'Business'), ('INDIVIDUAL', 'Individual')], max_length=25, null=True),
+            model_name="contact",
+            name="account_type",
+            field=models.CharField(
+                blank=True,
+                choices=[("BUSINESS", "Business"), ("INDIVIDUAL", "Individual")],
+                max_length=25,
+                null=True,
+            ),
         ),
         migrations.AlterField(
-            model_name='contact',
-            name='phone',
+            model_name="contact",
+            name="phone",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AlterField(
-            model_name='contact',
-            name='work',
+            model_name="contact",
+            name="work",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.RemoveField(
-            model_name='contact',
-            name='email',
+            model_name="contact",
+            name="email",
         ),
         migrations.RemoveField(
-            model_name='contact',
-            name='name',
+            model_name="contact",
+            name="name",
         ),
     ]
