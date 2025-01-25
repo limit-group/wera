@@ -1,7 +1,7 @@
 {% extends 'wera/base.html' %} {% block title %} Form Mtaani Feed {% endblock %}   {% block content %}
 
-<div class="container pt-2">
-  <div class="d-flex justify-content-between align-items-center mb-4">
+<div class="container mb-4 pt-3">
+  <div class="d-flex justify-content-between align-items-center">
     <p class="lead fw-bold">Form Mtaani Feed</p>
     <a href="{% url 'form_mtaani_create' %}" class="btn btn-primary"
       >Toa form <i class="bi bi-arrow-right-short"></i
@@ -11,7 +11,7 @@
 
   <div class="row">
     {% if form_mtaanis %} {% for j in form_mtaanis %}
-    <div class="col-lg-12 mb-2">
+    <div class="col-lg-12 mb-4">
       <div
         class="single_jobs white-bg d-flex justify-content-between align-items-center border p-4 rounded"
       >

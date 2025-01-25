@@ -1,65 +1,184 @@
-{% extends 'wera/base.html' %} {% block title %} Wera Feed {% endblock %}  {% load static %} {% block content %}
+{% extends 'wera/base.html' %}
+{% block title %} Wera Feed {% endblock %}
+{% load static %}
+{% block content %}
+<style>
+  /* Filter Sidebar Styles */
+.filter-sidebar {
+  position: sticky;
+  top: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+.filter-sidebar h5 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.filter-sidebar label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.filter-sidebar .form-control,
+.filter-sidebar .form-select {
+  font-size: 0.875rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  padding: 8px 12px;
+}
+
+.filter-sidebar .form-control:focus,
+.filter-sidebar .form-select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.filter-sidebar .btn-primary {
+  background-color: #2563eb;
+  border: none;
+  padding: 10px;
+  font-size: 0.875rem;
+  border-radius: 8px;
+}
+
+.filter-sidebar .btn-outline-secondary {
+  border: 1px solid #e5e7eb;
+  padding: 10px;
+  font-size: 0.875rem;
+  border-radius: 8px;
+}
+</style>
 
 <div class="category_area mb-4">
-  <!-- Job Listing Area -->
-  <div class="job_listing_area">
-    <div class="container">
-      <div class="job_lists">
-        <div class="d-lg-none">
-          <p class="lead">Weras Feed</p>
-          <hr />
-        </div>
-        <div class="row">
-          {% for j in weras %}
-          <div class="col-lg-12 mb-2">
-            <div
-              class="single_jobs white-bg d-flex justify-content-between align-items-center border p-4 rounded"
-            >
-              <div class="jobs_left d-flex align-items-center">
-                {% if j.image %}
-                <div class="thumb">
-                  <img
-                    src="{{ j.image }}"
-                    alt="{{ j.title }}"
-                    width="50"
-                    height="50"
-                    class="rounded-circle"
-                  />
-                </div>
-                {% endif %}
+  <div class="container">
+    <div class="row">
+      <!-- Filter Sidebar -->
+      <div class="col-lg-3 mt-4 d-none d-lg-block">
+        <div class="filter-sidebar bg-white p-4 rounded shadow-sm">
+          <h5 class="mb-4">Filter Jobs</h5>
+          <form method="get" action="{% url 'weras' %}">
+            <!-- Location Filter -->
+            <div class="mb-3">
+              <label for="location" class="form-label">Location</label>
+              <input
+                type="text"
+                name="location"
+                id="location"
+                class="form-control"
+                placeholder="Enter location"
+                value="{{ request.GET.location }}"
+              />
+            </div>
 
-                <div class="jobs_content">
-                  <a href="{% url 'wera_detail' j.slug %}">
-                    <p class="text-primary">{{ j.title }}</p>
-                  </a>
-                  <div class="links_locat d-flex align-items-center mt-2">
-                    <div class="location me-4">
-                      <small class="m-0">
-                        <i class="bi bi-geo-alt"></i> {{ j.location }}
-                      </small>
+            <!-- Category Filter -->
+            <div class="mb-3">
+              <label for="category" class="form-label">Category</label>
+              <select name="category" id="category" class="form-select">
+                <option value="">All Categories</option>
+                {% for category in categories %}
+                <option value="{{ category.id }}" {% if request.GET.category == category.id|stringformat:"s" %}selected{% endif %}>
+                  {{ category.name }}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <!-- Job Type Filter -->
+            <div class="mb-3">
+              <label for="job_type" class="form-label">Job Type</label>
+              <select name="job_type" id="job_type" class="form-select">
+                <option value="">All Types</option>
+                <option value="full_time" {% if request.GET.job_type == "full_time" %}selected{% endif %}>Full Time</option>
+                <option value="part_time" {% if request.GET.job_type == "part_time" %}selected{% endif %}>Part Time</option>
+                <option value="remote" {% if request.GET.job_type == "remote" %}selected{% endif %}>Remote</option>
+              </select>
+            </div>
+
+            <!-- Salary Range Filter -->
+            <div class="mb-3">
+              <label for="salary" class="form-label">Salary Range</label>
+              <input
+                type="number"
+                name="min_salary"
+                id="min_salary"
+                class="form-control mb-2"
+                placeholder="Min Salary"
+                value="{{ request.GET.min_salary }}"
+              />
+              <input
+                type="number"
+                name="max_salary"
+                id="max_salary"
+                class="form-control"
+                placeholder="Max Salary"
+                value="{{ request.GET.max_salary }}"
+              />
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary w-100 mt-2">Clear Filters</a>
+          </form>
+        </div>
+      </div>
+
+      <!-- Job Listings -->
+      <div class="col-lg-9">
+        <div class="job_listing_area">
+          <div class="job_lists">
+            <div class="row">
+              {% for j in weras %}
+              <div class="col-lg-12 mb-4">
+                <div class="single_jobs white-bg d-flex flex-column justify-content-between border p-4 rounded shadow-sm hover-shadow">
+                  <div class="jobs_left d-flex align-items-center">
+                    {% if j.image %}
+                    <div class="thumb me-3">
+                      <img
+                        src="{{ j.image }}"
+                        alt="{{ j.title }}"
+                        width="60"
+                        height="60"
+                        class="rounded-circle"
+                      />
                     </div>
-                    <div class="category">
-                      <small class="m-0">
-                        <i class="bi bi-tags"></i> {{ j.category.name }}
-                      </small>
+                    {% endif %}
+                    <div class="jobs_content">
+                      <a href="{% url 'wera_detail' j.slug %}" class="text-decoration-none">
+                        <h5 class="text-primary mb-1">{{ j.title }}</h5>
+                      </a>
+                      <div class="links_locat d-flex align-items-center mt-2">
+                        <div class="location me-3">
+                          <small class="text-muted">
+                            <i class="bi bi-geo-alt"></i> {{ j.location }}
+                          </small>
+                        </div>
+                        <div class="category">
+                          <small class="text-muted">
+                            <i class="bi bi-tags"></i> {{ j.category.name }}
+                          </small>
+                        </div>
+                      </div>
                     </div>
+                  </div>
+                  <div class="jobs_right d-flex justify-content-between align-items-center mt-3">
+                    <div class="date">
+                      <small class="text-muted" data-created-at="{{ j.created_at|date:'c' }}"></small>
+                    </div>
+                    <a href="{% url 'wera_detail' j.slug %}" class="btn btn-primary btn-sm">View Details</a>
                   </div>
                 </div>
               </div>
-              <div class="jobs_right d-flex align-items-center">
-                <div class="date">
-                  <small class="text-muted" data-created-at="{{ j.created_at|date:'c' }}"></small>
-                </div>
-              </div>
+              {% endfor %}
             </div>
           </div>
-          {% endfor %}
         </div>
       </div>
     </div>
   </div>
-
- 
 </div>
 
 {% endblock %}

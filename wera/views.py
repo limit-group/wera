@@ -37,9 +37,29 @@ def index(request):
 
 def weras(request):
     weras = Wera.get_weras()
+
+    location = request.GET.get('location')
+    category = request.GET.get('category')
+    job_type = request.GET.get('job_type')
+    min_salary = request.GET.get('min_salary')
+    max_salary = request.GET.get('max_salary')
+
+    if location:
+        weras = weras.filter(location__icontains=location)
+    if category:
+        weras = weras.filter(category_id=category)
+    if job_type:
+        weras = weras.filter(job_type=job_type)
+    if min_salary:
+        weras = weras.filter(salary__gte=min_salary)
+    if max_salary:
+        weras = weras.filter(salary__lte=max_salary)
+
+    categories = Category.get_categories()
     ctx = {
         "wera": weras,
         "profile": get_current_user_profile(request),
+        "categories": categories
     }
 
     return render(request, "wera/index.html", ctx)

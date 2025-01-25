@@ -1,31 +1,54 @@
-{% extends 'wera/base.html' %} 
-{% block title %} Wera Profiles {% endblock %} 
-{% load static %} 
+{% extends 'wera/base.html' %}
+{% block title %} Wera Profiles {% endblock %}
+{% load static %}
 {% block content %}
 
-<div class="container  pt-3">
-  <p class="text-center mb-4 lead">Find a Potential Profile for Your Task/Job</p>
-  
+<div class="container pt-4">
+  <h1 class="text-center mb-4 fw-bold text-gradient">Find a Freelancer or Business</h1>
+  <p class="text-center lead text-muted mb-5">
+    Connect with skilled professionals for your tasks or jobs.
+  </p>
+
   <div class="row g-4">
     <!-- Profile Card -->
     {% for profile in contacts %}
     {% if profile.phone %}
-    <div class="col-md-3 col-lg-3">
-      <div class="card h-100 shadow-sm border-0">
-        {% if profile.image %}
-        <img
-        src="{{ profile.image }}"
-          class="card-img-top rounded-circle"
-          alt="{{ profile.name }}"
-        />
-        {% endif %}
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title text-center">{{ profile.name }}</h5>
-          <p class="card-text text-muted">
-            {{ profile.work|truncatechars:120 }}
+    <div class="col-md-4 col-lg-3">
+      <div class="card h-100 shadow-sm border-0 hover-scale">
+        <!-- Profile Image -->
+        <div class="text-center pt-4">
+          {% if profile.image %}
+          <img
+            src="{{ profile.image }}"
+            class="card-img-top rounded-circle"
+            alt="{{ profile.name }}"
+            style="width: 100px; height: 100px; object-fit: cover;"
+          />
+          {% else %}
+          <div class="rounded-circle bg-light d-inline-flex align-items-center justify-content-center"
+               style="width: 100px; height: 100px;">
+            <i class="bi bi-person-fill text-muted" style="font-size: 3rem;"></i>
+          </div>
+          {% endif %}
+        </div>
+
+        <!-- Profile Details -->
+        <div class="card-body d-flex flex-column text-center">
+          <h5 class="card-title fw-bold mb-2">{{ profile.name }}</h5>
+          <p class="card-text text-muted small mb-3">
+            {{ profile.work|truncatechars:100 }}
           </p>
-          <div class="mt-auto text-center">
-            <a href="tel:{{profile.phone}}" class="btn btn-primary">
+
+          <!-- Skills/Tags -->
+          <div class="mb-3">
+            <span class="badge bg-primary me-1">Design</span>
+            <span class="badge bg-primary me-1">Development</span>
+            <span class="badge bg-primary">Marketing</span>
+          </div>
+
+          <!-- Contact Button -->
+          <div class="mt-auto">
+            <a href="tel:{{ profile.phone }}" class="btn btn-primary w-100">
               <i class="bi bi-telephone-outbound-fill"></i> Contact Me
             </a>
           </div>
@@ -34,8 +57,11 @@
     </div>
     {% endif %}
     {% empty %}
-    <div class="col-12 text-center">
-      <p class="text-muted">No profiles found. Please check back later!</p>
+    <div class="col-12 text-center py-5">
+      <div class="bg-light p-5 rounded">
+        <i class="bi bi-people display-4 text-muted mb-3"></i>
+        <p class="lead text-muted">No profiles found. Please check back later!</p>
+      </div>
     </div>
     {% endfor %}
   </div>

@@ -1,107 +1,174 @@
-{% extends 'wera/base.html' %} {% block title %} Wera {% endblock %}  {% load static %} {% block content %}
+{% extends 'wera/base.html' %}
+{% block title %} {{ wera.title }} {% endblock %}
+{% load static %}
+{% block content %}
+
+<style>
+
+.job_details_header {
+  border: 1px solid #e5e7eb;
+}
+
+.descript_wrap, .job_summary, .apply_now_wrap, .share_wrap {
+  border: 1px solid #e5e7eb;
+}
+
+.sidebar-sticky {
+  position: sticky;
+  top: 20px;
+}
+
+.btn-outline-primary {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.btn-outline-primary:hover {
+  background-color: #2563eb;
+  color: #fff;
+}
+
+.btn-outline-secondary {
+  border-color: #6b7280;
+  color: #6b7280;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #6b7280;
+  color: #fff;
+}
+
+.text-primary {
+  color: #2563eb !important;
+}
+
+.text-muted {
+  color: #6b7280 !important;
+}
+
+.bi {
+  font-size: 1.2rem;
+}
+</style>
 
 <div class="job_details_area pt-5">
   {% if wera %}
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 mb-4">
-        <div class="job_details_header shadow-sm p-4 rounded bg-white">
-          <div class="single_jobs d-flex justify-content-between">
-            <div class="jobs_left d-flex align-items-center">
+      <!-- Job Header -->
+      <div class="col-lg-8">
+        <div class="job_details_header shadow-sm p-4 rounded bg-white mb-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
               {% if wera.image %}
-              <div class="thumb">
+              <div class="thumb me-3">
                 <img
                   src="{{ wera.image }}"
                   alt="{{ wera.title }}"
-                  width="50"
-                  height="50"
+                  width="60"
+                  height="60"
                   class="rounded-circle"
                 />
               </div>
               {% endif %}
-              <div class="jobs_content ms-3">
-                  <p class="text-primary">{{ wera.title }}</p>
-                <div class="links_locat d-flex align-items-center mt-2">
-                  <div class="location me-4">
-                    <small class="m-0">
-                      <i class="bi bi-geo-alt"></i> {{ wera.location }}
-                    </small>
-                  </div>
-                  <div class="category">
-                    <small class="m-0">
-                      <i class="bi bi-tags"></i> {{ wera.category.name }}
-                    </small>
-                  </div>
+              <div>
+                <h2 class="text-primary mb-1">{{ wera.title }}</h2>
+                <div class="d-flex align-items-center text-muted">
+                  <span class="me-3">
+                    <i class="bi bi-geo-alt"></i> {{ wera.location }}
+                  </span>
+                  <span>
+                    <i class="bi bi-tags"></i> {{ wera.category.name }}
+                  </span>
                 </div>
               </div>
             </div>
-            <div class="jobs_right">
-              <div class="apply_now">
-                <a class="heart_mark" href="#"> <i class="bi bi-heart"></i> </a>
-              </div>
+            <div>
+              <a href="#" class="btn btn-outline-primary">
+                <i class="bi bi-heart"></i> Save
+              </a>
             </div>
           </div>
         </div>
 
-        <div class="descript_wrap mt-4 shadow-sm p-4 rounded bg-white">
-          <div class="single_wrap">
-            <p class="fw-bold lead">Description</p>
-            <p>{{ wera.description }}</p>
-          </div>
+        <!-- Job Description -->
+        <div class="descript_wrap shadow-sm p-4 rounded bg-white mb-4">
+          <h4 class="mb-3">Job Description</h4>
+          <p>{{ wera.description }}</p>
+        </div>
+
+        <!-- Job Summary -->
+        <div class="job_summary shadow-sm p-4 rounded bg-white mb-4">
+          <h4 class="mb-3">Job Summary</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <strong>Published On:</strong>
+              <span class="text-muted">{{ wera.created_at|date:"F d, Y" }}</span>
+            </li>
+            <li class="mb-2">
+              <strong>Category:</strong>
+              <span class="text-muted">{{ wera.category.name }}</span>
+            </li>
+            <li class="mb-2">
+              <strong>Location:</strong>
+              <span class="text-muted">{{ wera.location }}</span>
+            </li>
+            <li class="mb-2">
+              <strong>Salary:</strong>
+              <span class="text-muted">${{ wera.salary }}</span>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div class="col-lg-12 mb-4">
-        <div class="job_summary shadow-sm p-4 rounded bg-white">
-          <div class="summary_header">
-            <p class="fw-bold lead">Summary</p>
+      <!-- Sidebar (Apply Now & Share) -->
+      <div class="col-lg-4">
+        <div class="sidebar-sticky">
+          <!-- Apply Now Button -->
+          <div class="apply_now_wrap shadow-sm p-4 rounded bg-white mb-4">
+            <a href="#" class="btn btn-primary w-100">
+              <i class="bi bi-send"></i> Apply Now
+            </a>
           </div>
-          <div class="job_content">
-            <ul class="list-unstyled">
-              <li>
-                Published On:
-                <span class="text-muted">{{ wera.created_at }}</span>
-              </li>
-              <li>
-                Category:
-                <span class="text-muted">{{ wera.category.name }}</span>
-              </li>
-              <li>
-                Location: <span class="text-muted">{{ wera.location }}</span>
-              </li>
-            </ul>
-          </div>
-        </div>
 
-        <div class="share_wrap d-flex mt-4">
-          <span class="me-2">Share At:</span>
-          <ul class="list-unstyled d-flex">
-            <li class="me-3">
-              <a href="#" class="text-decoration-none">
-                <i class="bi bi-facebook"></i
-              ></a>
-            </li>
-            <li class="me-3">
-              <a href="#" class="text-decoration-none">
-                <i class="bi bi-google"></i
-              ></a>
-            </li>
-            <li class="me-3">
-              <a href="#" class="text-decoration-none">
-                <i class="bi bi-twitter"></i
-              ></a>
-            </li>
-            <li>
-              <a href="#" class="text-decoration-none">
-                <i class="bi bi-envelope"></i
-              ></a>
-            </li>
-          </ul>
+          <!-- Share Job -->
+          <div class="share_wrap shadow-sm p-4 rounded bg-white">
+            <h5 class="mb-3">Share This Job</h5>
+            <div class="d-flex align-items-center">
+              <!-- Copy Link -->
+              <button id="copyLinkBtn" class="btn btn-outline-secondary me-2" title="Copy Link">
+                <i class="bi bi-link-45deg"></i>
+              </button>
+              <!-- Social Media Sharing -->
+              <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="btn btn-outline-primary me-2" title="Share on Facebook">
+                <i class="bi bi-facebook"></i>
+              </a>
+              <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text=Check%20out%20this%20job:%20{{ wera.title }}" target="_blank" class="btn btn-outline-primary me-2" title="Share on Twitter">
+                <i class="bi bi-twitter"></i>
+              </a>
+              <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}" target="_blank" class="btn btn-outline-primary me-2" title="Share on LinkedIn">
+                <i class="bi bi-linkedin"></i>
+              </a>
+              <a href="mailto:?subject=Check%20out%20this%20job&body={{ request.build_absolute_uri }}" class="btn btn-outline-primary" title="Share via Email">
+                <i class="bi bi-envelope"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
   {% endif %}
 </div>
+
+<!-- JavaScript for Copy Link -->
+<script>
+  document.getElementById('copyLinkBtn').addEventListener('click', function () {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url).then(() => {
+      alert('Link copied to clipboard!');
+    });
+  });
+</script>
 
 {% endblock %}
