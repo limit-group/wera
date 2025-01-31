@@ -132,8 +132,8 @@
           <div class="job_lists">
             <div class="row">
               {% for j in weras %}
-              <div class="col-lg-12 mb-4">
-                <div class="single_jobs white-bg d-flex flex-column justify-content-between border p-4 rounded shadow-sm hover-shadow">
+              <div class="col-lg-12 mb-2">
+                <div class="single_jobs white-bg d-flex flex-column justify-content-between">
                   <div class="jobs_left d-flex align-items-center">
                     {% if j.image %}
                     <div class="thumb me-3">
@@ -166,7 +166,7 @@
                   </div>
                   <div class="jobs_right d-flex justify-content-between align-items-center mt-3">
                     <div class="date">
-                      <small class="text-muted" data-created-at="{{ j.created_at|date:'c' }}"></small>
+                      <i class="bi bi-clock"></i> <small class="text-muted" data-created-at="{{ j.created_at|date:'c' }}"></small>
                     </div>
                     <a href="{% url 'wera_detail' j.slug %}" class="btn btn-primary btn-sm">View Details</a>
                   </div>
