@@ -1,3 +1,79 @@
 {% extends 'wera/base.html' %} {% block title %} Wera | Advertising{% endblock %} {% load static %} {% block content %}
+<style>
+    h1, h2 {
+        text-align: center;
+    }
+    p {
+        font-size: 16px;
+        text-align: center;
+    }
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        text-align: center;
+        margin-top: 30px;
+    }
+    .feature-box {
+        background: #eef5ff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .contact {
+        text-align: center;
+        margin-top: 40px;
+    }
+</style>
+<div class="container pt-5">
+  <h1>Advertise with <span class="text-gradient">Wera</span></h1>
+  <p>
+    Boost your brand visibility and reach thousands of job seekers and
+    professionals on Wera.
+  </p>
+
+  <div class="features">
+    <div class="feature-box">
+      <h2>Targeted Audience</h2>
+      <p>
+        Connect directly with job seekers, employers, and industry professionals
+        actively looking for opportunities.
+      </p>
+    </div>
+    <div class="feature-box">
+      <h2>Custom Ad Solutions</h2>
+      <p>
+        Choose from banner ads, sponsored job postings, featured employer
+        branding, and more.
+      </p>
+    </div>
+    <div class="feature-box">
+      <h2>High Engagement</h2>
+      <p>
+        Our platform ensures that your brand gets noticed by the right people,
+        increasing conversion rates.
+      </p>
+    </div>
+    <div class="feature-box">
+      <h2>Affordable Packages</h2>
+      <p>
+        Flexible and cost-effective advertising plans tailored to fit your
+        marketing budget.
+      </p>
+    </div>
+  </div>
+
+  <div class="text-center pt-5">
+    <a href="mailto:support@wera.co.ke" class="btn btn-primary">Partner with Us</a>
+  </div>
+
+  <div class="contact">
+    <h2>Let's Grow Together</h2>
+    <p>
+      Ready to take your brand to the next level? Contact us at
+      <a href="mailto:support@wera.co.ke">ads@wera.co.ke</a>.
+    </p>
+  </div>
+</div>
 
 {% endblock %}
