@@ -1,30 +1,19 @@
 from django.urls import path
-
-from wera.views import (
-    cookie_policy,
-    index,
-    newsletter_subscription,
-    privacy_policy,
-    report_a_problem,
-    weras,
-    wera_create,
-    wera_detail,
-    search_wera,
-    advertising,
-)
 from django.views.generic import TemplateView
 
+from wera import views
+
 urlpatterns = [
-    path("", index, name="home"),
-    path("weras/", weras, name="weras"),
-    path("weras-create/", wera_create, name="wera_create"),
-    path("weras/<slug:slug>/", wera_detail, name="wera_detail"),
-    path("search/", search_wera, name="search_wera"),
-    path("privacy-policy/", privacy_policy, name="privacy_policy"),
-    path("cookie-policy/", cookie_policy, name="cookie_policy"),
-    path("advertising/", advertising, name="advertising"),
-    path("report-a-problem/", report_a_problem, name="report_a_problem"),
-    path("newsletters", newsletter_subscription, name="newsletter_create"),
+    path("", views.index, name="home"),
+    path("weras/", views.weras, name="weras"),
+    path("weras-create/", views.wera_create, name="wera_create"),
+    path("weras/<slug:slug>/", views.wera_detail, name="wera_detail"),
+    path("search/", views.search_wera, name="search_wera"),
+    path("privacy-policy/", views.privacy_policy, name="privacy_policy"),
+    path("advertising/", views.advertising, name="advertising"),
+    path("report-a-problem/", views.report_a_problem, name="report_a_problem"),
+    path("terms-of-service/", views.terms_of_service, name="terms_of_service"),
+    path("newsletters", views.newsletter_subscription, name="newsletter_create"),
     path(
         "robots.txt",
         TemplateView.as_view(

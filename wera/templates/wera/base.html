@@ -6,7 +6,10 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>{% block title %}{% endblock %}</title>
-    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1,width=device-width,viewport-fit=cover" />
+    <meta
+      name="viewport"
+      content="initial-scale=1.0,maximum-scale=1,width=device-width,viewport-fit=cover"
+    />
     <meta
       name="description"
       content="Discover Wera, the go-to platform connecting students, businesses, and professionals. Gain work experience, hire top talent, or expand your professional network. Empower communities through meaningful connections and innovation."
@@ -114,8 +117,9 @@ Top job platforms for professionals and students"
 
       body {
         font-family: "Hammersmith One", serif !important;
-        font-weight: 400;
+        font-optical-sizing: auto;
         font-style: normal;
+        font-weight: 400;
         background-color: var(--background);
         color: var(--text);
       }
@@ -202,12 +206,6 @@ Top job platforms for professionals and students"
       /* Tablet desktop :768px. */
       /* small mobile :320px. */
       /* Large Mobile :480px. */
-      body {
-        font-family: "Roboto", serif !important;
-        font-optical-sizing: auto;
-        font-style: normal;
-        font-variation-settings: "wdth" 100;
-      }
 
       a {
         text-decoration: none !important;
@@ -2033,11 +2031,11 @@ Top job platforms for professionals and students"
           </script></small
         >
         <small><a href="{%  url 'privacy_policy' %}">Privacy Policy</a></small>
-        <small><a href="{%  url 'cookie_policy' %}">Cookie Policy</a></small>
         <small
           ><a href="{%  url 'report_a_problem' %}">Report a problem</a></small
         >
         <small><a href="{%  url 'advertising' %}">Advertising</a></small>
+        <small><a href="{%  url 'terms_of_service' %}">Terms of Service</a></small>
       </div>
     </footer>
     <script>

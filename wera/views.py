@@ -159,11 +159,11 @@ def privacy_policy(request):
     return render(request, "wera/privacy_policy.html", ctx)
 
 
-def cookie_policy(request):
+def terms_of_service(request):
     ctx = {
         "profile": get_current_user_profile(request),
     }
-    return render(request, "wera/cookie_policy.html", ctx)
+    return render(request, "wera/terms_of_service.html", ctx)
 
 
 def advertising(request):

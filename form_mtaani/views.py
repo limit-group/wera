@@ -41,9 +41,10 @@ def form_mtaani_create(request):
     if request.method == "POST":
         form = FormMtaaniForm(request.POST)
         if form.is_valid():
-            form.user = request.user
-            form.save()
-            return render("form_mtaani/index.html", ctx)
+            f = form.save(commit=False)
+            f.user = request.user
+            f.save()
+            return render(request, "form_mtaani/index.html", ctx)
     else:
         form = FormMtaaniForm()
         ctx["form"] = form
