@@ -2002,7 +2002,7 @@ Top job platforms for professionals and students"
     <div class="container min-vh-100">
       <div class="d-flex justify-content-center align-items-center">
         <div class="feed-container w-100">
-          {% if user.is_authenticated %} {% if not profile.phone %}
+          {% if user.is_authenticated and not exclude_profile_check and not profile.phone %}
           <div class="pt-2">
             <div class="alert alert-warning">
               Your profile is incomplete;
@@ -2010,7 +2010,7 @@ Top job platforms for professionals and students"
               update your profile.
             </div>
           </div>
-          {% endif %} {% endif %} {% if messages %} {% for message in messages%}
+          {% endif %} {% if messages %} {% for message in messages%}
           <div class="pt-2">
             <div class="alert alert-info">{{ message }}</div>
           </div>

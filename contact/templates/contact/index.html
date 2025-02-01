@@ -1,18 +1,17 @@
-{% extends 'wera/base.html' %}
-{% block title %} Wera Profiles {% endblock %}
-{% load static %}
-{% block content %}
+{% extends 'wera/base.html' %} {% block title %} Wera Profiles {% endblock %} {%
+load static %} {% block content %}
 
-<div class="container pt-4">
-  <h1 class="text-center mb-4 fw-bold text-gradient">Find a Freelancer or Business</h1>
+<div class="container pt-4 pb-5">
+  <h1 class="text-center mb-4 fw-bold text-gradient">
+    Find a Freelancer or Business
+  </h1>
   <p class="text-center lead text-muted mb-5">
     Connect with skilled professionals for your tasks or jobs.
   </p>
 
-  <div class="row g-4">
+  <div class="row">
     <!-- Profile Card -->
-    {% for profile in contacts %}
-    {% if profile.phone %}
+    {% for profile in contacts %} {% if profile.phone %}
     <div class="col-md-4 col-lg-3">
       <div class="card h-100 shadow-sm border-0 hover-scale">
         <!-- Profile Image -->
@@ -22,12 +21,14 @@
             src="{{ profile.image }}"
             class="card-img-top rounded-circle"
             alt="{{ profile.name }}"
-            style="width: 100px; height: 100px; object-fit: cover;"
+            style="width: 100px; height: 100px; object-fit: cover"
           />
           {% else %}
-          <div class="rounded-circle bg-light d-inline-flex align-items-center justify-content-center"
-               style="width: 100px; height: 100px;">
-            <i class="bi bi-person-fill text-muted" style="font-size: 3rem;"></i>
+          <div
+            class="rounded-circle bg-light d-inline-flex align-items-center justify-content-center"
+            style="width: 100px; height: 100px"
+          >
+            <i class="bi bi-person-fill text-muted" style="font-size: 3rem"></i>
           </div>
           {% endif %}
         </div>
@@ -55,12 +56,13 @@
         </div>
       </div>
     </div>
-    {% endif %}
-    {% empty %}
+    {% endif %} {% empty %}
     <div class="col-12 text-center py-5">
       <div class="bg-light p-5 rounded">
         <i class="bi bi-people display-4 text-muted mb-3"></i>
-        <p class="lead text-muted">No profiles found. Please check back later!</p>
+        <p class="lead text-muted">
+          No profiles found. Please check back later!
+        </p>
       </div>
     </div>
     {% endfor %}

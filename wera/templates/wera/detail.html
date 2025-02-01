@@ -1,63 +1,67 @@
-{% extends 'wera/base.html' %}
-{% block title %} {{ wera.title }} {% endblock %}
-{% load static %}
-{% block content %}
+{% extends 'wera/base.html' %} {% block title %} {{ wera.title }} {% endblock %}
+{% load static %} {% block content %}
 
 <style>
+  .job_details_header {
+    border: 1px solid #e5e7eb;
+  }
 
-.job_details_header {
-  border: 1px solid #e5e7eb;
-}
+  .descript_wrap,
+  .job_summary,
+  .apply_now_wrap,
+  .share_wrap {
+    border: 1px solid #e5e7eb;
+  }
+  .descript_wrap p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+  .sidebar-sticky {
+    position: sticky;
+    top: 20px;
+  }
 
-.descript_wrap, .job_summary, .apply_now_wrap, .share_wrap {
-  border: 1px solid #e5e7eb;
-}
+  .btn-outline-primary {
+    border-color: #2563eb;
+    color: #2563eb;
+  }
 
-.sidebar-sticky {
-  position: sticky;
-  top: 20px;
-}
+  .btn-outline-primary:hover {
+    background-color: #2563eb;
+    color: #fff;
+  }
 
-.btn-outline-primary {
-  border-color: #2563eb;
-  color: #2563eb;
-}
+  .btn-outline-secondary {
+    border-color: #6b7280;
+    color: #6b7280;
+  }
 
-.btn-outline-primary:hover {
-  background-color: #2563eb;
-  color: #fff;
-}
+  .btn-outline-secondary:hover {
+    background-color: #6b7280;
+    color: #fff;
+  }
 
-.btn-outline-secondary {
-  border-color: #6b7280;
-  color: #6b7280;
-}
+  .text-primary {
+    color: #2563eb !important;
+  }
 
-.btn-outline-secondary:hover {
-  background-color: #6b7280;
-  color: #fff;
-}
+  .text-muted {
+    color: #6b7280 !important;
+  }
 
-.text-primary {
-  color: #2563eb !important;
-}
-
-.text-muted {
-  color: #6b7280 !important;
-}
-
-.bi {
-  font-size: 1.2rem;
-}
+  .bi {
+    font-size: 1.2rem;
+  }
 </style>
 
-<div class="job_details_area pt-5">
+<div class="job_details_area pt-3">
   {% if wera %}
   <div class="container">
     <div class="row">
       <!-- Job Header -->
       <div class="col-lg-8">
-        <div class="job_details_header shadow-sm p-4 rounded bg-white mb-4">
+        <div class="job_details_header shadow-sm p-4 bg-white mb-2">
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
               {% if wera.image %}
@@ -67,12 +71,13 @@
                   alt="{{ wera.title }}"
                   width="60"
                   height="60"
-                  class="rounded-circle"
+                  class=-circle"
                 />
               </div>
               {% endif %}
               <div>
                 <h2 class="text-primary mb-1">{{ wera.title }}</h2>
+                <br>
                 <div class="d-flex align-items-center text-muted">
                   <span class="me-3">
                     <i class="bi bi-geo-alt"></i> {{ wera.location }}
@@ -84,26 +89,28 @@
               </div>
             </div>
             <div>
-              <a href="#" class="btn btn-outline-primary">
-                <i class="bi bi-heart"></i> Save
+              <a href="#" class="btn">
+                <i class="bi bi-heart"></i>
               </a>
             </div>
           </div>
         </div>
 
         <!-- Job Description -->
-        <div class="descript_wrap shadow-sm p-4 rounded bg-white mb-4">
+        <div class="descript_wrap shadow-sm p-4 bg-white mb-2">
           <h4 class="mb-3">Job Description</h4>
           <p>{{ wera.description }}</p>
         </div>
 
         <!-- Job Summary -->
-        <div class="job_summary shadow-sm p-4 rounded bg-white mb-4">
+        <div class="job_summary  p-4 bg-white mb-2">
           <h4 class="mb-3">Job Summary</h4>
           <ul class="list-unstyled">
             <li class="mb-2">
               <strong>Published On:</strong>
-              <span class="text-muted">{{ wera.created_at|date:"F d, Y" }}</span>
+              <span class="text-muted"
+                >{{ wera.created_at|date:"F d, Y" }}</span
+              >
             </li>
             <li class="mb-2">
               <strong>Category:</strong>
@@ -125,31 +132,54 @@
       <div class="col-lg-4">
         <div class="sidebar-sticky">
           <!-- Apply Now Button -->
-          <div class="apply_now_wrap shadow-sm p-4 rounded bg-white mb-4">
+          <div class="apply_now_wrap p-4 bg-white mb-4">
             <a href="#" class="btn btn-primary w-100">
               <i class="bi bi-send"></i> Apply Now
             </a>
           </div>
 
           <!-- Share Job -->
-          <div class="share_wrap shadow-sm p-4 rounded bg-white">
+          <div class="share_wrap bg-white">
             <h5 class="mb-3">Share This Job</h5>
             <div class="d-flex align-items-center">
               <!-- Copy Link -->
-              <button id="copyLinkBtn" class="btn btn-outline-secondary me-2" title="Copy Link">
+              <button
+                id="copyLinkBtn"
+                class="btn btn-outline-secondary me-2"
+                title="Copy Link"
+              >
                 <i class="bi bi-link-45deg"></i>
               </button>
               <!-- Social Media Sharing -->
-              <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="btn btn-outline-primary me-2" title="Share on Facebook">
+              <a
+                href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"
+                target="_blank"
+                class="btn btn-outline-primary me-2"
+                title="Share on Facebook"
+              >
                 <i class="bi bi-facebook"></i>
               </a>
-              <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text=Check%20out%20this%20job:%20{{ wera.title }}" target="_blank" class="btn btn-outline-primary me-2" title="Share on Twitter">
+              <a
+                href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text=Check%20out%20this%20job:%20{{ wera.title }}"
+                target="_blank"
+                class="btn btn-outline-primary me-2"
+                title="Share on Twitter"
+              >
                 <i class="bi bi-twitter"></i>
               </a>
-              <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}" target="_blank" class="btn btn-outline-primary me-2" title="Share on LinkedIn">
+              <a
+                href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}"
+                target="_blank"
+                class="btn btn-outline-primary me-2"
+                title="Share on LinkedIn"
+              >
                 <i class="bi bi-linkedin"></i>
               </a>
-              <a href="mailto:?subject=Check%20out%20this%20job&body={{ request.build_absolute_uri }}" class="btn btn-outline-primary" title="Share via Email">
+              <a
+                href="mailto:?subject=Check%20out%20this%20job&body={{ request.build_absolute_uri }}"
+                class="btn btn-outline-primary"
+                title="Share via Email"
+              >
                 <i class="bi bi-envelope"></i>
               </a>
             </div>
@@ -163,10 +193,10 @@
 
 <!-- JavaScript for Copy Link -->
 <script>
-  document.getElementById('copyLinkBtn').addEventListener('click', function () {
+  document.getElementById("copyLinkBtn").addEventListener("click", function () {
     const url = window.location.href;
     navigator.clipboard.writeText(url).then(() => {
-      alert('Link copied to clipboard!');
+      alert("Link copied to clipboard!");
     });
   });
 </script>

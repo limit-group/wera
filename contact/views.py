@@ -1,14 +1,13 @@
-from django.shortcuts import get_object_or_404, render
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404, redirect, render
+
 from common.choices import ACCOUNT_TYPE_CHOICES
 from common.utils import upload_to_supabase_bucket
 from contact.forms import ProfileForm
 from contact.models import Profile
 from wera.models import Category, Location
-
-from django.shortcuts import get_object_or_404, redirect
-from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
 
 
 def contact(request):
@@ -16,7 +15,11 @@ def contact(request):
     if request.method == "GET":
         contacts = Profile.objects.all()
         footer_categories = Category.get_categories()[:4]
-        ctx = {"contacts": contacts, "footer_categories": footer_categories}
+        ctx = {
+            "contacts": contacts,
+            "footer_categories": footer_categories,
+            "exclude_profile_check": True,
+        }
         return render(request, "contact/index.html", ctx)
 
     if request.method == "POST":
