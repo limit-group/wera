@@ -1,5 +1,6 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
+
 from form_mtaani.models import FormMtaani
 from wera.models import Wera
 
@@ -25,7 +26,7 @@ class StaticViewSitemap(Sitemap):
     changefreq = "daily"
 
     def items(self):
-        return ["advertising", "report_a_problem", "privacy_policy", "cookie_policy"]
+        return ["advertising", "report_a_problem", "privacy_policy", "terms_of_service"]
 
     def location(self, item):
         return reverse(item)
