@@ -65,7 +65,7 @@ def weras(request):
     return render(request, "wera/index.html", ctx)
 
 
-@login_required
+# @login_required
 def wera_detail(request, slug):
     wera = Wera.objects.filter(slug=slug).select_related("category").first()
     ctx = {
