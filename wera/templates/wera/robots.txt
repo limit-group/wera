@@ -2,3 +2,5 @@ User-agent: *
 
 Disallow: /admin/
 Disallow: /accounts/
+Allow: /
+Sitemap: https://wera.co.ke/sitemap.xml
