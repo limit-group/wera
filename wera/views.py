@@ -184,4 +184,4 @@ def error_500(request):
     ctx = {
         "profile": get_current_user_profile(request),
     }
-    return render(request, "wera/error_505.html", ctx, status=500)
+    return render(request, "wera/error_500.html", ctx, status=500)
