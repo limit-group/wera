@@ -1032,19 +1032,6 @@
           margin-right: 10px;
         }
       }
-
-      .job_listing_area
-        .job_lists
-        .single_jobs
-        .jobs_left
-        .jobs_conetent
-        .links_locat
-        .location
-        p {
-        margin-bottom: 0;
-        color: #aab1b7;
-      }
-
       .job_listing_area
         .job_lists
         .single_jobs
@@ -1402,28 +1389,6 @@
           .location {
           margin-right: 10px;
         }
-      }
-
-      .job_details_area
-        .single_jobs
-        .jobs_left
-        .jobs_conetent
-        .links_locat
-        .location
-        p {
-        margin-bottom: 0;
-        color: #aab1b7;
-      }
-
-      .job_details_area
-        .single_jobs
-        .jobs_left
-        .jobs_conetent
-        .links_locat
-        .location
-        p
-        i {
-        margin-right: 7px;
       }
 
       @media (max-width: 767px) {
@@ -1841,7 +1806,7 @@
     <nav class="navbar navbar-expand-lg navbar-light d-none d-lg-flex">
       <div class="container">
         <a href="{% url 'home' %}" class="navbar-brand text-gradient">Wera</a>
-        <form class="d-flex" action={% url 'watson:search' %}>
+        <form class="d-flex" action='{% url "watson:search" %}'>
           <input
             class="form-control me-2"
             type="search"
@@ -1915,7 +1880,7 @@
             <li class="nav-item">
               <a
                 href="{% url 'wera_create' %}"
-                class="nav-link btn text-white btn-dark"
+                class="nav-link btn btn-outline-secondary"
               >
                 <i class="bi bi-plus-circle"></i> Post Wera
               </a>
@@ -1993,7 +1958,7 @@
         </div>
       </div>
     </div>
-    <footer class="footer bg-dark text-white d-none d-lg-block">
+    <footer class="footer bg-dark text-white d-none d-lg-block mt-2">
       <div class="d-flex justify-content-center gap-3 d-none d-md-flex p-3">
         <small
           >&copy;

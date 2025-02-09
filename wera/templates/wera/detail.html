@@ -55,9 +55,9 @@
   }
 </style>
 
-<div class="job_details_area pt-3">
+<div class="job_details_area pt-3 ">
   {% if wera %}
-  <div class="container">
+  <div class="container pb-5">
     <div class="row">
       <!-- Job Header -->
       <div class="col-lg-8">
@@ -71,12 +71,11 @@
                   alt="{{ wera.title }}"
                   width="60"
                   height="60"
-                  class=-circle"
                 />
               </div>
               {% endif %}
               <div>
-                <h2 class="text-primary mb-1">{{ wera.title }}</h2>
+                <h3 class="text-primary mb-1">{{ wera.title }}</h3>
                 <br>
                 <div class="d-flex align-items-center text-muted">
                   <span class="me-3">
@@ -120,10 +119,6 @@
               <strong>Location:</strong>
               <span class="text-muted">{{ wera.location }}</span>
             </li>
-            <li class="mb-2">
-              <strong>Salary:</strong>
-              <span class="text-muted">${{ wera.salary }}</span>
-            </li>
           </ul>
         </div>
       </div>
@@ -132,12 +127,17 @@
       <div class="col-lg-4">
         <div class="sidebar-sticky">
           <!-- Apply Now Button -->
+           {% if wera.application_link %}
           <div class="apply_now_wrap p-4 bg-white mb-4">
-            <a href="#" class="btn btn-primary w-100">
+            <a  href="{{ wera.application_link }}"
+                target="_blank" class="btn btn-outline-primary w-100">
               <i class="bi bi-send"></i> Apply Now
             </a>
+
+            <small class="text-danger"><i class="bi bi-info"></i> This link may take you to an external website not maintained by us</small>
           </div>
 
+              {% endif %}
           <!-- Share Job -->
           <div class="share_wrap bg-white">
             <h5 class="mb-3">Share This Job</h5>
@@ -150,7 +150,7 @@
               >
                 <i class="bi bi-link-45deg"></i>
               </button>
-              <!-- Social Media Sharing -->
+
               <a
                 href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"
                 target="_blank"

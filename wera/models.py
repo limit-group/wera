@@ -67,6 +67,7 @@ class Wera(WeraBaseModel):
     image = models.TextField(null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     slug = models.SlugField(unique=True, blank=True, null=True)
+    application_link = models.URLField(null=True, blank=True)
 
     class Meta:
         ordering = ["updated_at"]

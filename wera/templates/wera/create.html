@@ -1,10 +1,10 @@
-{% extends 'wera/base.html' %} {% block title %} Post Wera {% endblock %}  {% block content %}
+{% extends 'wera/base.html' %} {% block title %} Post Wera {% endblock %} {% block content %}
 
 <div class="">
   <div class="row">
     <div class="col-md-6 pt-4">
       <p class="text-center mb-4 lead">Posting a Wera with us is free</p>
-      <form method="POST" action="{% url 'wera_create' %}"  enctype="multipart/form-data">
+      <form method="POST" action="{% url 'wera_create' %}" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="mb-3">
           <label for="title" class="form-label">Wera Title</label>
@@ -12,13 +12,7 @@
         </div>
         <div class="mb-3">
           <label for="description" class="form-label">Description</label>
-          <textarea
-            class="form-control"
-            name="description"
-            id="description"
-            rows="5"
-            required
-          ></textarea>
+          <textarea class="form-control" name="description" id="description" rows="5" required></textarea>
         </div>
         <div class="mb-3">
           <label for="location" class="form-label">Location</label>
@@ -39,8 +33,12 @@
           </select>
         </div>
         <div class="mb-3">
+          <label for="application_link" class="form-label">Wera application link <small class="text-info">e.g https://job.apply</small></label>
+          <input type="text" class="form-control" name="application_link" id="application_link" required />
+        </div>
+        <div class="mb-3">
           <label for="image" class="form-label">Image</label>
-          <input type="file" class="form-control" name="image" id="image"  />
+          <input type="file" class="form-control" name="image" id="image" />
         </div>
         <div class="mt-3">
           <button type="submit" class="btn btn-primary w-100">Post Wera</button>
@@ -49,36 +47,30 @@
     </div>
 
     <div class="col-md-6 pt-4">
-      <p class="text-center mb-4 lead"Top Weras</p>
-      {% if weras %} {% for w in weras %}
+      <p class="text-center mb-4 lead" Top Weras</p>
+        {% if weras %} {% for w in weras %}
       <div class="col-lg-12 mb-2">
-        <div
-          class="single_jobs white-bg d-flex justify-content-between align-items-center p-4 rounded border"
-        >
+        <div class="single_jobs white-bg d-flex justify-content-between align-items-center p-4 rounded border">
           <div class="jobs_left d-flex align-items-center">
             <div class="jobs_content">
               <a href="{% url 'form_mtaani_detail' w.pk %}">
-                <h4 class="text-primary">{{ w.title }}</h4>
+                <p class="text-primary">{{ w.title }}</p>
               </a>
               <div class="links_locat d-flex align-items-center mt-2">
                 <div class="location me-4">
-                  <p class="m-0">
+                  <small class="m-0">
                     <i class="bi bi-geo-alt"></i> {{ w.location }}
-                  </p>
+                  </small>
                 </div>
                 <div class="category">
-                  <p class="m-0"><i class="bi bi-tags"></i> {{ w.category }}</p>
+                  <small class="m-0"><i class="bi bi-tags"></i> {{ w.category }}</small>
                 </div>
               </div>
             </div>
           </div>
-          <div class="jobs_right d-flex align-items-center">
-            <div class="apply_now me-3">
-              <a class="heart_mark" href="#"> <i class="bi bi-heart"></i> </a>
-            </div>
-            <div class="date">
-              <small class="text-muted" data-created-at="{{ w.created_at|date:'c' }}"></small>
-            </div>
+          <div class="jobs_right d-flex align-items-center justify-content-between align-items-center mt-3">
+            <a href="{% url 'wera_detail' w.slug %}" class="btn btn-primary btn-sm">View Details <i
+                class="bi bi-arrow-right"></i></a>
           </div>
         </div>
       </div>

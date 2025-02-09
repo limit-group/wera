@@ -1,4 +1,5 @@
 from allauth.account.decorators import verified_email_required
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import redirect, render
 
 from common.utils import upload_to_supabase_bucket
@@ -22,38 +23,45 @@ def search(request):
 def index(request):
     weras = Wera.get_weras()
     locations = Location.get_locations()
+    page = request.GET.get("page", 1)  # Get current page, default to 1
+    paginator = Paginator(weras, 10)  # Show 10 results per page
+
+    try:
+        paginated_weras = paginator.page(page)
+    except PageNotAnInteger:
+        paginated_weras = paginator.page(1)  # Default to page 1 if invalid
+    except EmptyPage:
+        paginated_weras = paginator.page(
+            paginator.num_pages
+        )  # Show last page if out of range
 
     ctx = {
         "locations": locations,
-        "weras": weras,
+        "weras": paginated_weras,
         "profile": get_current_user_profile(request),
     }
     return render(request, "wera/index.html", ctx)
 
 
 def weras(request):
-    weras = Wera.get_weras()
+    weras = Wera.get_weras().all()
 
-    location = request.GET.get("location")
-    category = request.GET.get("category")
-    job_type = request.GET.get("job_type")
-    min_salary = request.GET.get("min_salary")
-    max_salary = request.GET.get("max_salary")
+    page = request.GET.get("page", 1)  # Get current page, default to 1
+    paginator = Paginator(weras, 10)  # Show 10 results per page
 
-    if location:
-        weras = weras.filter(location__icontains=location)
-    if category:
-        weras = weras.filter(category_id=category)
-    if job_type:
-        weras = weras.filter(job_type=job_type)
-    if min_salary:
-        weras = weras.filter(salary__gte=min_salary)
-    if max_salary:
-        weras = weras.filter(salary__lte=max_salary)
+    try:
+        paginated_weras = paginator.page(page)
+    except PageNotAnInteger:
+        paginated_weras = paginator.page(1)  # Default to page 1 if invalid
+    except EmptyPage:
+        paginated_weras = paginator.page(
+            paginator.num_pages
+        )  # Show last page if out of range
 
     categories = Category.get_categories()
+
     ctx = {
-        "wera": weras,
+        "wera": paginated_weras,
         "profile": get_current_user_profile(request),
         "categories": categories,
     }
@@ -76,7 +84,7 @@ def wera_detail(request, slug):
 def wera_create(request):
     categories = Category.get_categories()
     locations = Location.get_locations()
-    weras = Wera.get_weras()[:5]
+    weras = Wera.get_weras()[:6]
 
     ctx = {
         "categories": categories,
