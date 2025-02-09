@@ -1841,10 +1841,12 @@
     <nav class="navbar navbar-expand-lg navbar-light d-none d-lg-flex">
       <div class="container">
         <a href="{% url 'home' %}" class="navbar-brand text-gradient">Wera</a>
-        <form class="d-flex">
+        <form class="d-flex" action={% url 'watson:search' %}>
           <input
             class="form-control me-2"
             type="search"
+            name="q"
+            value="{{request.GET.q}}"
             placeholder="Search"
             aria-label="Search"
           />

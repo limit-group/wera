@@ -101,7 +101,7 @@
             </div>
 
             <!-- Salary Range Filter -->
-            <div class="mb-3">
+            {% comment %} <div class="mb-3">
               <label for="salary" class="form-label">Salary Range</label>
               <input
                 type="number"
@@ -119,7 +119,7 @@
                 placeholder="Max Salary"
                 value="{{ request.GET.max_salary }}"
               />
-            </div>
+            </div> {% endcomment %}
 
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary w-100">Apply Filters</button>

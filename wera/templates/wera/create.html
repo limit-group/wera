@@ -1,8 +1,8 @@
 {% extends 'wera/base.html' %} {% block title %} Post Wera {% endblock %}  {% block content %}
 
-<div class="d-flex container">
+<div class="">
   <div class="row">
-    <div class="col-md-6 p-4">
+    <div class="col-md-6 pt-4">
       <p class="text-center mb-4 lead">Posting a Wera with us is free</p>
       <form method="POST" action="{% url 'wera_create' %}"  enctype="multipart/form-data">
         {% csrf_token %}
@@ -48,8 +48,8 @@
       </form>
     </div>
 
-    <div class="col-md-6 p-4">
-      <p class="text-center mb-4 lead">Weras</p>
+    <div class="col-md-6 pt-4">
+      <p class="text-center mb-4 lead"Top Weras</p>
       {% if weras %} {% for w in weras %}
       <div class="col-lg-12 mb-2">
         <div

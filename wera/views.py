@@ -1,4 +1,4 @@
-from allauth.account.decorators import login_required, verified_email_required
+from allauth.account.decorators import verified_email_required
 from django.shortcuts import redirect, render
 
 from common.utils import upload_to_supabase_bucket
@@ -15,12 +15,8 @@ def get_current_user_profile(request):
     )
 
 
-def search_wera(request):
-    query = request.GET.get("query")
-    weras = Wera.objects.filter(title__icontains=query)
-
-    ctx = {"weras": weras}
-    return render(request, "wera/index.html", ctx)
+def search(request):
+    return render(request, "wera/index.html")
 
 
 def index(request):
@@ -80,7 +76,7 @@ def wera_detail(request, slug):
 def wera_create(request):
     categories = Category.get_categories()
     locations = Location.get_locations()
-    weras = Wera.get_weras()
+    weras = Wera.get_weras()[:5]
 
     ctx = {
         "categories": categories,

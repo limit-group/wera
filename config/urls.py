@@ -41,6 +41,7 @@ urlpatterns = [
     path("favicon.ico", RedirectView.as_view(url="/staticfiles/images/favicon.ico")),
     path("grappelli/", include("grappelli.urls")),
     path("admin/", admin.site.urls),
+    path("search/", include("watson.urls", namespace="watson")),
     path(
         "sitemap.xml",
         sitemap,

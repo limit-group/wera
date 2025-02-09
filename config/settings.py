@@ -41,6 +41,7 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     "grappelli",
+    "watson",
     "django_browser_reload",
     "django.contrib.admin",
     "django.contrib.auth",
