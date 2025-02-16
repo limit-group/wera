@@ -47,6 +47,7 @@ def contact(request):
 
 @login_required
 def contact_detail(request, user_id):
+    ctx = {}
     user = get_object_or_404(User, id=user_id)
     profile = Profile.get_profile_by_user_id(user=user)
 
